@@ -2,22 +2,25 @@
 
 # Programmer: Lacie Cruise
 # Date: February 7, 2022
-# Description:
-# GitHub URL:
+# Description: This program is a temperature calculator that converts fahrenheit to celsius
+# or celsius to fahrenheit. It will continue asking the user if they want to continue
+# converting until they decide not to.
+# GitHub URL: https://github.com/Ljcruise/CSC365_Python.git
 
 # display a welcome message
-print("Welcome to the Future Value Calculator")
+print('Welcome to the Temperature Calculator')
 print()
 
 while True:
+    temp_conversion = str(input('Would you like to convert to fahrenheit (f) or celsius (c)?: '))
 
     is_valid = True
-    while is_valid == True:
-        monthly_investment = float(input("Enter monthly investment:\t"))
-        if monthly_investment > 0 and monthly_investment <= 1000:
+    while is_valid:
+        if temp_conversion == 'f':
+            print('Enter the degrees in celsius: ')
             is_valid = False
         else:
-            print("Entry must be greater than 0. Please try again.")
+            print('Enter the degrees in fahrenheit: ')
 
     is_valid = True
     while is_valid == True:
