@@ -15,7 +15,8 @@ print()
 while True:
     # while loop to get the user's temperature conversion input until it is f or c
     while True:
-        temp_conversion = str(input('Would you like to convert to fahrenheit (f) or celsius (c)?: '))
+        user_input = input('Would you like to convert to fahrenheit (f) or celsius (c)?: ')
+        temp_conversion = user_input[0].lower()
         if temp_conversion in ['f', 'c']:
             break
         else:
@@ -29,7 +30,7 @@ while True:
         else:
             print('Entry must be between -35 and 400. Please try again.')
 
-        is_valid = True
+    is_valid = True
     while is_valid:
         ending_temp = int(input('Enter the ending temp (-35 to 400): '))
         if -35 <= ending_temp <= 400:
@@ -39,34 +40,19 @@ while True:
 
     is_valid = True
     while is_valid:
-        temp_step = int(input('Enter the temperature step of your choice (5 or 10)'))
-        if 0 < years <= 50:
-            is_valid = False
+        temp_step = int(input('Enter the temperature step of your choice (5 or 10): '))
+        if temp_step in [5, 10]:
+            break
         else:
-            print("Entry must be greater than 0 and less than or equal to 50.",
-                  "Please try again.")
+            print("Entry must be 5 or 10. Please try again.")
 
-    print()
+    # code for conversion table
 
-    # convert yearly values to monthly values
-    monthly_interest_rate = yearly_interest_rate / 12 / 100
-    months = years * 12
-
-    # calculate the future value
-    future_value = 0
-    for i in range(1, months + 1):
-        future_value += monthly_investment
-        monthly_interest_amount = future_value * monthly_interest_rate
-        future_value += monthly_interest_amount
-
-        # display the results for each year
-        if i % 12 == 0:
-            print("Year = ", i // 12,
-                  "\tFuture Value = ", round(future_value, 2))
     print()
 
     # see if the user wants to continue
     choice = input("Would you like to continue (y or n)? ")
+    print('=' * 62)
     if choice != 'y':
         break
 
