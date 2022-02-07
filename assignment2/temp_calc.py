@@ -21,23 +21,21 @@ while True:
         if -15 <= celsius_temp <= 150:
             is_valid = False
         else:
-            print('Entry must be greater than or equal to -15 and less than or equal to 150.',
-                  'Please try again.')
+            print('Entry must be between -15 and 150. Please try again.')
 
-    if temp_conversion == 'c':
+    else:
         is_valid = True
     while is_valid:
         fahr_temp = int(input('Enter degrees in fahrenheit (-35 to 400): '))
-        if -35 <= temp_conversion <= 400:
+        if -35 <= fahr_temp <= 400:
             is_valid = False
         else:
-            print("Entry must be greater than or equal to -35 and less than or equal to 400.",
-                  "Please try again.")
+            print('Entry must be between -35 and 400. Please try again.')
 
     is_valid = True
-    while is_valid == True:
+    while is_valid:
         years = int(input("Enter number of years:\t\t"))
-        if years > 0 and years <= 50:
+        if 0 < years <= 50:
             is_valid = False
         else:
             print("Entry must be greater than 0 and less than or equal to 50.",
