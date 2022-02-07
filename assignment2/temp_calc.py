@@ -14,21 +14,24 @@ print()
 while True:
     temp_conversion = str(input('Would you like to convert to fahrenheit (f) or celsius (c)?: '))
 
-    is_valid = True
+    if temp_conversion == 'f':
+        is_valid = True
     while is_valid:
-        if temp_conversion == 'f':
-            print('Enter the degrees in celsius: ')
+        celsius_temp = int(input('Enter degrees in celsius (-15 to 150): '))
+        if -15 <= celsius_temp <= 150:
             is_valid = False
         else:
-            print('Enter the degrees in fahrenheit: ')
+            print('Entry must be greater than or equal to -15 and less than or equal to 150.',
+                  'Please try again.')
 
-    is_valid = True
-    while is_valid == True:
-        yearly_interest_rate = float(input("Enter yearly interest rate:\t"))
-        if yearly_interest_rate > 0 and yearly_interest_rate <= 15:
+    if temp_conversion == 'c':
+        is_valid = True
+    while is_valid:
+        fahr_temp = int(input('Enter degrees in fahrenheit (-35 to 400): '))
+        if -35 <= temp_conversion <= 400:
             is_valid = False
         else:
-            print("Entry must be greater than 0 and less than or equal to 15.",
+            print("Entry must be greater than or equal to -35 and less than or equal to 400.",
                   "Please try again.")
 
     is_valid = True
