@@ -7,7 +7,7 @@
 
 # display a welcome message
 print('The Salary Calculator program')
-print('=============================')
+print('=' * 29)
 print()
 
 # get input from the user
@@ -28,5 +28,5 @@ print()
 print(f'Unadjusted Salary: {unadj_salary}')
 print(f'Adjusted Annual Salary: {annual_salary}')
 print()
-print('=============================')
+print('=' * 29)
 print('Come back soon!')
