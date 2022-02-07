@@ -8,26 +8,31 @@
 # GitHub URL: https://github.com/Ljcruise/CSC365_Python.git
 
 # display a welcome message
-print('Welcome to the Temperature Calculator')
+print(' ' * 13 + 'Welcome to the Temperature Calculator')
+print('=' * 62)
 print()
 
 while True:
-    temp_conversion = str(input('Would you like to convert to fahrenheit (f) or celsius (c)?: '))
 
-    if temp_conversion == 'f':
-        is_valid = True
-    while is_valid:
-        celsius_temp = int(input('Enter degrees in celsius (-15 to 150): '))
-        if -15 <= celsius_temp <= 150:
-            is_valid = False
+    while True:
+        temp_conversion = str(input('Would you like to convert to fahrenheit (f) or celsius (c)?: '))
+        if temp_conversion == 'f' or 'c':
+            break
         else:
-            print('Entry must be between -15 and 150. Please try again.')
+            print('Input must be an f or c. Please try again.')
 
-    else:
+    is_valid = True
+    while is_valid:
+        starting_temp = int(input('Enter the starting temp (-35 to 400): '))
+        if -35 <= starting_temp <= 400:
+            break
+        else:
+            print('Entry must be between -35 and 400. Please try again.')
+
         is_valid = True
     while is_valid:
-        fahr_temp = int(input('Enter degrees in fahrenheit (-35 to 400): '))
-        if -35 <= fahr_temp <= 400:
+        ending_temp = int(input('Enter the ending temp (-35 to 400): '))
+        if -35 <= ending_temp <= 400:
             is_valid = False
         else:
             print('Entry must be between -35 and 400. Please try again.')
