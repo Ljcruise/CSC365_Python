@@ -16,6 +16,7 @@ print()
 
 # outer while loop to continue looping as long as the user wants
 while True:
+
     # while loop to get the user's temperature conversion input until it is f or c
     while True:
         # if they enter f, they want to convert to celsius
@@ -26,6 +27,7 @@ while True:
         else:
             print('Input must be an f or c. Please try again.')
 
+    # while loop to get the user's temperature they want to start at
     while True:
         starting_temp = int(input('Enter the starting temp (-35 to 400): '))
         if -35 <= starting_temp <= 400:
@@ -33,6 +35,7 @@ while True:
         else:
             print('Entry must be between -35 and 400. Please try again.')
 
+    # while loop to get the temperature the user wants to stop at
     while True:
         ending_temp = int(input('Enter the ending temp (-35 to 400): '))
         if -35 <= ending_temp <= 400:
@@ -40,6 +43,7 @@ while True:
         else:
             print('Entry must be between -35 and 400. Please try again.')
 
+    # while loop to get the step the user wants to increase the temp
     while True:
         step_temp = int(input('Enter the temperature step of your choice (5, 10, 15): '))
         if step_temp in [5, 10, 15]:
@@ -47,10 +51,13 @@ while True:
         else:
             print("Entry must be 5 or 10. Please try again.")
 
+    # formatting for the start of the conversion table
     print(f"{'-' * line_length}")
     print(f"{'F' : ^5}{'C' : ^5}")
     print('=' * 10)
 
+    # for loop that compares the starting and ending temp as well as the step to know
+    # how many times to loop through the conversions.
     for temp in range(starting_temp, ending_temp, step_temp):
         if temp_conversion == 'f':
             conv_temp = round(temp * 9 / 5 + 32)  # converting to fahrenheit
