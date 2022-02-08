@@ -13,6 +13,7 @@ line_length = 65
 print(' ' * 14 + 'Welcome to the Temperature Calculator')
 print('=' * line_length)
 print()
+
 # outer while loop to continue looping as long as the user wants
 while True:
     # while loop to get the user's temperature conversion input until it is f or c
@@ -40,17 +41,19 @@ while True:
             print('Entry must be between -35 and 400. Please try again.')
 
     while True:
-        degree_step = int(input('Enter the temperature step of your choice (5, 10, 15): '))
-        if degree_step in [5, 10, 15]:
+        step_temp = int(input('Enter the temperature step of your choice (5, 10, 15): '))
+        if step_temp in [5, 10, 15]:
             break
         else:
             print("Entry must be 5 or 10. Please try again.")
 
-    for i in range(1, 11):
+    for temp in range(starting_temp, ending_temp, step_temp):
+        if temp_conversion == 'f':
+            conv_temp = temp * 9 / 5 + 32  # converting to fahrenheit
+        else:
+            conv_temp = (temp - 32) * 5 / 9  # converting to celsius
 
-    # conversion table
-    c = (f - 32) * 5 / 9
-    f = c * 9 / 5 + 32
+        print(f'Converted temperature: {conv_temp}')
 
     print()
 
