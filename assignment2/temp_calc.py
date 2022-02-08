@@ -53,11 +53,11 @@ while True:
 
     for temp in range(starting_temp, ending_temp, step_temp):
         if temp_conversion == 'f':
-            conv_temp = temp * 9 / 5 + 32  # converting to fahrenheit
+            conv_temp = round(temp * 9 / 5 + 32)  # converting to fahrenheit
         else:
-            conv_temp = (temp - 32) * 5 / 9  # converting to celsius
+            conv_temp = round((temp - 32) * 5 / 9)  # converting to celsius
 
-        print(f"{temp: >15} {conv_temp: >15}")
+        print(f'{temp: >15} {conv_temp: >29}')
 
     print('=' * line_length)
     print()
