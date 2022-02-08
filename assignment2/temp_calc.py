@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 
 # Programmer: Lacie Cruise
-# Date: February 7, 2022
+# Date: February 8, 2022
 # Description: This program is a temperature calculator that converts fahrenheit to celsius
 # or celsius to fahrenheit. It will continue asking the user if they want to continue
 # converting until they decide not to.
@@ -11,16 +11,15 @@ line_length = 70
 
 # display a welcome message
 print(f"{'Welcome to the Temperature Calculator': ^70}")
-print('=' * line_length)
-print()
 
 # outer while loop to continue looping as long as the user wants
 while True:
+    print('=' * line_length)
 
     # while loop to get the user's temperature conversion input until it is f or c
     while True:
         # if they enter f, they want to convert to celsius
-        user_input = input('Would you like to convert to fahrenheit (f) or to celsius (c)?: ')
+        user_input = input(f'{"Would you like to convert to fahrenheit (f) or to celsius (c)?: ":<65s} ')
         temp_conversion = user_input[0].lower()
         if temp_conversion in ['f', 'c']:
             break
@@ -29,7 +28,7 @@ while True:
 
     # while loop to get the user's temperature they want to start at
     while True:
-        starting_temp = int(input('Enter the starting temp (-35 to 400): '))
+        starting_temp = int(input(f'{"Enter the starting temperature (-35 to 400)":<65s} '))
         if -35 <= starting_temp <= 400:
             break
         else:
@@ -37,7 +36,7 @@ while True:
 
     # while loop to get the temperature the user wants to stop at
     while True:
-        ending_temp = int(input('Enter the ending temp (-35 to 400): '))
+        ending_temp = int(input(f'{"Enter the ending temperature (-35 to 400)":<65s} '))
         if -35 <= ending_temp <= 400:
             break
         else:
@@ -45,16 +44,16 @@ while True:
 
     # while loop to get the step the user wants to increase the temp
     while True:
-        step_temp = int(input('Enter the temperature step of your choice (5, 10, 15): '))
+        step_temp = int(input(f'{"Enter the temperature step of your choice (5, 10, 15)":<65s} '))
         if step_temp in [5, 10, 15]:
             break
         else:
-            print("Entry must be 5 or 10. Please try again.")
+            print('Entry must be 5 or 10. Please try again.')
 
     # formatting for the start of the conversion table
-    print(f"{'-' * line_length}")
-    print(f"{'F' : ^5}{'C' : ^5}")
-    print('=' * 10)
+    print(f'{"":=<13}')
+    print(f"|{'F':^5}|{'C':^5}|")
+    print(f'{"":=<13}')
 
     # for loop that compares the starting and ending temp as well as the step to know
     # how many times to loop through the conversions.
@@ -64,13 +63,13 @@ while True:
         else:
             conv_temp = round((temp - 32) * 5 / 9)  # converting to celsius
 
-        print(f'{temp: >5.0f} {conv_temp: >4.0f}')
+        print(f'| {temp:3.0f} | {conv_temp:3.0f} |')
 
-    print('=' * 10)
+    print(f'{"":=<13}')
     print()
 
     # see if the user wants to continue
-    choice = input("Would you like to continue (y or n)? ")
+    choice = input('Would you like to continue (y or n)? ')
     if choice != 'y':
         break
 
