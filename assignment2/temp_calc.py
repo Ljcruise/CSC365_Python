@@ -78,6 +78,4 @@ while True:
     if choice != 'y':
         break
 
-    print()
-
 print("Bye!")
