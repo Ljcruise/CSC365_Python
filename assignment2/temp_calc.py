@@ -20,7 +20,7 @@ while True:
     # while loop to get the user's temperature conversion input until it is f or c
     while True:
         # if they enter f, they want to convert to celsius
-        user_input = input(f'{"Would you like to convert to fahrenheit (f) or to celsius (c)?: ":<65s} ')
+        user_input = input(f'{"Would you like to convert to fahrenheit (f) or to celsius (c)?":.<65s}: ')
         temp_conversion = user_input[0].lower()
         if temp_conversion in ['f', 'c']:
             break
@@ -29,7 +29,7 @@ while True:
 
     # while loop to get the user's temperature they want to start at
     while True:
-        starting_temp = int(input(f'{"Enter the starting temperature (-35 to 400)":<65s} '))
+        starting_temp = int(input(f'{"Enter the starting temperature (-35 to 400)":.<65s}: '))
         if -35 <= starting_temp <= 400:
             break
         else:
@@ -37,7 +37,7 @@ while True:
 
     # while loop to get the temperature the user wants to stop at
     while True:
-        ending_temp = int(input(f'{"Enter the ending temperature (-35 to 400)":<65s} '))
+        ending_temp = int(input(f'{"Enter the ending temperature (-35 to 400)":.<65s}: '))
         if -35 <= ending_temp <= 400:
             break
         else:
@@ -45,7 +45,7 @@ while True:
 
     # while loop to get the step the user wants to increase the temp
     while True:
-        step_temp = int(input(f'{"Enter the temperature step of your choice (1 to 20)":<65s} '))
+        step_temp = int(input(f'{"Enter the temperature step of your choice (1 to 20)":.<65s}: '))
         if 1 <= step_temp <= 20:
             break
         else:
