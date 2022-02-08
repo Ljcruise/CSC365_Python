@@ -4,7 +4,8 @@
 # Date: February 8, 2022
 # Description: This program is a temperature calculator that converts fahrenheit to celsius
 # or celsius to fahrenheit. It will continue asking the user if they want to continue
-# converting until they decide not to.
+# converting until they decide not to. The user gets to enter the starting and ending
+# values and the amount they want to increase by each loop.
 # GitHub URL: https://github.com/Ljcruise/CSC365_Python.git
 
 line_length = 70
@@ -44,11 +45,11 @@ while True:
 
     # while loop to get the step the user wants to increase the temp
     while True:
-        step_temp = int(input(f'{"Enter the temperature step of your choice (5, 10, 15)":<65s} '))
-        if step_temp in [5, 10, 15]:
+        step_temp = int(input(f'{"Enter the temperature step of your choice (1 to 20)":<65s} '))
+        if 1 <= step_temp <= 20:
             break
         else:
-            print('Entry must be 5 or 10. Please try again.')
+            print('Entry must be between 1 and 20. Please try again.')
 
     # formatting for the start of the conversion table
     print(f'{"":=<13}')
