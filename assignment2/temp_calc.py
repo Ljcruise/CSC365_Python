@@ -53,12 +53,16 @@ while True:
 
     # formatting for the start of the conversion table
     print(f'{"":=<13}')
-    print(f"|{'F':^5}|{'C':^5}|")
+    if temp_conversion == 'f':
+        print(f"|{'C':^5}|{'F':^5}|")
+    else:
+        print(f"|{'F':^5}|{'C':^5}|")
     print(f'{"":=<13}')
 
     # for loop that compares the starting and ending temp as well as the step to know
-    # how many times to loop through the conversions.
+    # how many times to loop through the conversions
     for temp in range(starting_temp, ending_temp, step_temp):
+
         if temp_conversion == 'f':
             conv_temp = round(temp * 9 / 5 + 32)  # converting to fahrenheit
         else:
