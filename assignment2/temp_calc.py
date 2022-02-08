@@ -7,10 +7,10 @@
 # converting until they decide not to.
 # GitHub URL: https://github.com/Ljcruise/CSC365_Python.git
 
-line_length = 65
+line_length = 70
 
 # display a welcome message
-print(' ' * 14 + 'Welcome to the Temperature Calculator')
+print(f"{'Welcome to the Temperature Calculator': ^70}")
 print('=' * line_length)
 print()
 
@@ -48,8 +48,8 @@ while True:
             print("Entry must be 5 or 10. Please try again.")
 
     print(f"{'-' * line_length}")
-    print(f"{'F' : ^30}{'C' : ^30}")
-    print('=' * line_length)
+    print(f"{'F' : ^5}{'C' : ^5}")
+    print('=' * 10)
 
     for temp in range(starting_temp, ending_temp, step_temp):
         if temp_conversion == 'f':
@@ -57,17 +57,15 @@ while True:
         else:
             conv_temp = round((temp - 32) * 5 / 9)  # converting to celsius
 
-        print(f'{temp: >15} {conv_temp: >29}')
+        print(f'{temp: >5.0f} {conv_temp: >4.0f}')
 
-    print('=' * line_length)
+    print('=' * 10)
     print()
 
     # see if the user wants to continue
-    while True:
-        choice = input("Would you like to continue (y or n)? ")
-        print('=' * line_length)
-        if choice != 'y':
-            break
+    choice = input("Would you like to continue (y or n)? ")
+    if choice != 'y':
+        break
 
     print()
 
