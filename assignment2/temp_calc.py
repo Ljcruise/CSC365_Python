@@ -47,14 +47,19 @@ while True:
         else:
             print("Entry must be 5 or 10. Please try again.")
 
+    print(f"{'-' * line_length}")
+    print(f"{'F' : ^30}{'C' : ^30}")
+    print('=' * line_length)
+
     for temp in range(starting_temp, ending_temp, step_temp):
         if temp_conversion == 'f':
             conv_temp = temp * 9 / 5 + 32  # converting to fahrenheit
         else:
             conv_temp = (temp - 32) * 5 / 9  # converting to celsius
 
-        print(f'Converted temperature: {conv_temp}')
+        print(f"{temp: >15} {conv_temp: >15}")
 
+    print('=' * line_length)
     print()
 
     # see if the user wants to continue
