@@ -1,6 +1,7 @@
 #!/usr/bin/env python3
-import random
+
 import turtle
+from random import randint
 
 """
 This module contains functions related to drawing and moving a circle around the screen
@@ -12,8 +13,8 @@ __copyright__ = ""
 __github__ = "https://github.com/Ljcruise/CSC365_Python.git"
 
 wn = None  # the global window screen that all shapes will share
-t = None   # the global turtle that all shapes will share
-hidden_obj = None # the global hidden object for the game
+t = None  # the global turtle that all shapes will share
+hidden_obj = None  # the global hidden object for the game
 
 
 def turtle_setup():
@@ -29,8 +30,8 @@ def turtle_setup():
     t = turtle.Turtle()  # this will be the circle that is moved around by the user once drawn
 
     # make sure the turtle window screen displays on top of other open windows
-    root_window = wn.getcanvas().winfo_toplevel()  # get the top level turtle screen canvas
-    root_window.call('wm', 'attributes', '.', '-topmost', '1')  # and make it have the top focus
+    #root_window = wn.getcanvas().winfo_toplevel()  # get the top level turtle screen canvas
+    #root_window.call('wm', 'attributes', '.', '-topmost', '1')  # and make it have the top focus
 
 
 # position where the turtle will be drawn at
@@ -48,18 +49,15 @@ def hidden_obj_setup():
         None
     """
     global hidden_obj
-    hidden_obj = turtle.Turtle()   # create the hidden object turtle
+    hidden_obj = turtle.Turtle()  # create the hidden object turtle
     hidden_obj.speed(0)
-    hidden_obj.shape('square')   # change the shape to a square
+    hidden_obj.shape('square')  # change the shape to a square
     hidden_obj.color('blue')
     hidden_obj.penup()
-    hidden_obj.shapesize(100, 100)
-    hidden_obj.goto(0, 0)
+    hidden_obj.shapesize(1, 1)
+    hidden_obj.goto(randint(-400, 0), randint(0, 400))
+    turtle.done()
 
-    if t.distance(hidden_obj) < 15:
-        x = random.randint(-290, 290)
-        y = random.randint(-290, 290)
-    hidden_obj.goto(x, y)
 
 def move_home():
     """
@@ -141,6 +139,7 @@ def setup_window(bg_color='white'):
     Returns:
         None
     """
+    global wn
 
     wn.tracer(False)  # turn animation off which causes screen flickering as the circle gets redrawn
     wn.title('Hot-Cold Turtle Game')  # title the title bar of the window
@@ -168,7 +167,7 @@ def draw_circle(diameter=10):
         None
     """
 
-    global x, y, fill_color
+    global t, x, y, fill_color
 
     t.hideturtle()  # don't show the icon
     t.speed('fastest')  # draw quickly
@@ -197,7 +196,6 @@ def main():
     Returns:
         None
     """
-
     global fill_color
 
     fill_color = 'pink'  # override the default red color
@@ -208,7 +206,7 @@ def main():
 
     hidden_obj_setup()  # place the hidden object
 
-    # draw_circle(50)  # draw the initial shape based on diameter
+    draw_circle(50)  # draw the initial shape based on diameter
 
     wn.mainloop()  # keep the turtle window open until the user closes it
 
