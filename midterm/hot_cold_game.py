@@ -1,6 +1,7 @@
 #!/usr/bin/env python3
 
 import user_object
+import hidden_object
 
 """
 This module contains functions related to the hot cold game.
@@ -14,7 +15,10 @@ __copyright__ = 'Copyright 2022.03.04, Hot-Cold Game Assignment'
 __github__ = 'https://github.com/Ljcruise/CSC365_Python.git'
 
 def start_game():
+    hidden_object.main()
+    print('Testing')
     user_object.main()
+
 
 def main():
     """
