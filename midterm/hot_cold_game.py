@@ -54,6 +54,11 @@ def setup_window():
 
 def set_random_location():
     global hidden_x, hidden_y
+    while True:
+        hidden_x = random.randint(-420, 420)
+        hidden_y = random.randint(-300, 300)
+    #if not touching:
+    #    break
 
 
 def move_home():
@@ -165,7 +170,8 @@ def set_fill_color():
 def display_instructions():
     # write text on the screen
     t.penup()            # don't want to see icon moving on the screen
-    t.goto(-100, 300)    # from the current position which is center after clear, move left 350 up 350
+    t.goto(-100, 300)  # from the current position which is center after clear, move left 350 up 350
+    t.pendown()
     t.pencolor('black')  # text color
     t.write("Use arrows to move, or press 'h' for home", font=("Verdana", 12, "bold"))
 
@@ -213,8 +219,10 @@ def main():
         no value
     """
     setup_window()
+
     display_user_circle()
     display_hidden_circle()
+    display_instructions()
     s.mainloop()
 
 
