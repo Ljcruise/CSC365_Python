@@ -4,9 +4,10 @@ import turtle
 import random
 
 """
-This module contains functions related to the hot cold game.
-It imports modules already created for displaying a random
-hidden object and the user's moving circle game piece.
+This program creates a hot-cold game using turtle. The user will determine the size of the
+circles for the game to decide difficulty. The goal is to find a hidden object in as few of
+moves as possible. The color of the user's circle will change depending on how 'hot' or 'cold'
+(close or far) the user is away from the hidden object.
 """
 
 __author__ = 'Lacie Cruise'
@@ -37,10 +38,64 @@ def display_game():
     global t
 
     t.clear()
-    #set_fill_color()
+    set_fill_color()
     display_user_circle()
     display_hidden_circle()
     display_instructions()
+
+
+def get_size():
+    """
+    This function gets the user's input for the size of the circles and the movement.
+    If the user closes the prompt without entering a number, the default is 50 for both.
+
+    Returns:
+        None
+    """
+    global circle_size, move_size
+
+    try:
+        circle_size = int(turtle.numinput('Circle', 'Size of circles (10-100)', minval=10, maxval=100))
+        move_size = int(turtle.numinput('Circle', 'Size of move (10-100)', minval=10, maxval=100))
+    except:
+        circle_size = 50
+        move_size = 50
+
+
+def setup_window():
+    """
+    Controls how the window looks.
+
+    Args:
+
+    Returns:
+        None
+    """
+    global s
+    s.tracer(False)  # turn animation off which causes screen flickering as the circle gets redrawn
+    s.title('Hot-Cold Game')  # title the title bar of the window
+    s.bgcolor('black')
+
+    # set up the keys to listen to and what function should be called
+    s.onkeypress(debug, 'd')
+    s.onkeypress(move_home, 'h')
+    s.onkeypress(setup_game, 'r')
+    s.onkeypress(move_up, "Up")
+    s.onkeypress(move_down, "Down")
+    s.onkeypress(move_right, "Right")
+    s.onkeypress(move_left, "Left")
+    s.listen()  # start listening for keys being pressed
+
+
+def setup_game():
+    global s, t, num_moves, hidden_color
+
+    num_moves = 0
+    hidden_color = 'black'
+    t.clear()
+    setup_window()
+    t.speed('fastest')  # draw quickly
+    get_size()
 
 
 def debug():
@@ -145,48 +200,13 @@ def move_down():
     display_game()
 
 
-def setup_window():
-    """
-    Controls how the window looks.
-
-    Args:
-
-    Returns:
-        None
-    """
-    global s
-    s.tracer(False)  # turn animation off which causes screen flickering as the circle gets redrawn
-    s.title('Hot-Cold Game')  # title the title bar of the window
-    s.bgcolor('black')
-
-    # set up the keys to listen to and what function should be called
-    s.onkeypress(debug, 'd')
-    s.onkeypress(move_home, 'h')
-    s.onkeypress(move_up, "Up")
-    s.onkeypress(move_down, "Down")
-    s.onkeypress(move_right, "Right")
-    s.onkeypress(move_left, "Left")
-    s.listen()  # start listening for keys being pressed
-
-
-def set_random_location():
+def set_hidden_location():
     global hidden_x, hidden_y
     while True:
         hidden_x = random.randint(-420, 420)
         hidden_y = random.randint(-300, 300)
     # if not touching:
     #    break
-
-
-def get_size():
-    global circle_size, move_size
-
-    try:
-        circle_size = int(turtle.numinput('Circle', 'Size of circles', minval=10, maxval=100))
-        move_size = int(turtle.numinput('Circle', 'Size of move', minval=10, maxval=100))
-    except:
-        circle_size = 50
-        move_size = 50
 
 
 def set_fill_color():
@@ -282,6 +302,12 @@ def display_user_circle():
     display_instructions()
 
 
+def set_center_location():
+    global circle_size
+
+    middle = circle_size / 2 * -1
+
+
 def display_hidden_circle():
     """
     This function displays the hidden circle based on the circle size,
@@ -304,17 +330,6 @@ def display_hidden_circle():
     t.begin_fill()  # start the fill of whatever is being drawn
     t.circle(circle_size)  # diameter of the circle
     t.end_fill()  # done drawing the object to complete the fill
-
-
-def setup_game():
-    global s, t, num_moves, hidden_color
-
-    num_moves = 0
-    hidden_color = 'black'
-    t.clear()
-    setup_window()
-    t.speed('fastest')  # draw quickly
-    get_size()
 
 
 def start_game():
