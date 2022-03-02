@@ -48,8 +48,8 @@ def display_game():
 
     t.clear()
     set_fill_color()
-    display_hidden_circle()
     display_user_circle()
+    display_hidden_circle()
     display_instructions()
 
 
@@ -243,6 +243,23 @@ def set_hidden_location():
             break
 
 
+def set_center_location():
+    """
+    The set center location function places the user's circle in the middle of the screen
+    based on the circle's size.
+    Args:
+        no value
+    Returns:
+        no value
+    """
+    global x, y
+
+    center_pos = int(circle_size / 2) * -1
+
+    x = center_pos
+    y = center_pos
+
+
 def set_fill_color():
     """
     This function sets the amount the user's circle must overlap the hidden circle in order
@@ -259,8 +276,8 @@ def set_fill_color():
 
     # if the circles overlap, then set both circles to a green
     if abs(x - hidden_x) < overlap and abs(y - hidden_y) < overlap:
-        hidden_color = 'green'
-        user_color = 'green yellow'
+        hidden_color = 'green yellow'
+        user_color = 'yellow green'
     else:
         if previous_x != x:
             if abs(previous_x - hidden_x) > abs(x - hidden_x):
@@ -341,23 +358,6 @@ def display_user_circle():
     t.end_fill()  # done drawing the object to complete the fill
 
     display_instructions()
-
-
-def set_center_location():
-    """
-    The set center location function places the user's circle in the middle of the screen
-    based on the circle's size.
-    Args:
-        no value
-    Returns:
-        no value
-    """
-    global x, y
-
-    center_pos = int(circle_size / 2) * -1
-
-    x = center_pos
-    y = center_pos
 
 
 def display_hidden_circle():
