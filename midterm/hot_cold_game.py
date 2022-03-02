@@ -106,12 +106,12 @@ def setup_game():
     t.speed('fastest')  # draw quickly
     get_size()
     set_center_location()
-    #set_hidden_location()
+    set_hidden_location()
 
     # set up the keys to listen to and what function should be called
     s.onkeypress(debug, 'd')
     s.onkeypress(move_home, 'h')
-    s.onkeypress(setup_game, 'r')
+    s.onkeypress(start_game, 'r')
     s.onkeypress(move_up, "Up")
     s.onkeypress(move_down, "Down")
     s.onkeypress(move_right, "Right")
@@ -232,16 +232,15 @@ def set_hidden_location():
     Returns:
         no value
     """
-    global hidden_x, hidden_y, circle_size, x, y
+    global hidden_x, hidden_y
+    too_close = 2 * circle_size + 10
+
     while True:
         hidden_x = random.randint(-420, 420)
         hidden_y = random.randint(-300, 300)
-        too_close = 2 * circle_size + 10
 
-        if hidden_x != x and hidden_x != too_close:
-            hidden_x
-        if hidden_y != y and hidden_y != too_close:
-            hidden_y
+        if abs(hidden_x) > too_close and abs(hidden_y) > too_close:
+            break
 
 
 def set_fill_color():
@@ -254,13 +253,13 @@ def set_fill_color():
     Returns:
         no value
     """
-    global hidden_color, user_color, x, y, previous_x, previous_y, hidden_x, hidden_y
+    global hidden_color, user_color, previous_x, previous_y
 
     overlap = circle_size * 2 - 10
 
     # if the circles overlap, then set both circles to a green
     if abs(x - hidden_x) < overlap and abs(y - hidden_y) < overlap:
-        hidden_color = 'green yellow'
+        hidden_color = 'green'
         user_color = 'green yellow'
     else:
         if previous_x != x:
