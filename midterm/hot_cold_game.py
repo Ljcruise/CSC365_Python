@@ -216,7 +216,20 @@ def set_fill_color():
 
 
 def display_instructions():
+    """
+    The display instructions function displays the total number of user's moves in the right-hand
+    corner, and displays the instructions in the left-hand corner.
+    Args:
+        no value
+    Returns:
+        no value
+    """
     global num_moves
+    t.penup()
+    t.goto(225, 300)
+    t.pendown()
+    t.pencolor('white')  # text color
+    t.write('Total moves= {}'.format(num_moves), font=('Verdana', 12, 'bold'))
 
     # write text on the screen
     t.penup()  # don't want to see icon moving on the screen
@@ -293,7 +306,18 @@ def display_hidden_circle():
     t.end_fill()  # done drawing the object to complete the fill
 
 
-def main():
+def setup_game():
+    global s, t, num_moves, hidden_color
+
+    num_moves = 0
+    hidden_color = 'black'
+    t.clear()
+    setup_window()
+    t.speed('fastest')  # draw quickly
+    get_size()
+
+
+def start_game():
     """
     The main function, used to run the program by displaying the main menu and options.
     Args:
@@ -309,4 +333,4 @@ def main():
 if __name__ == '__main__':
     s = turtle.Screen()
     t = turtle.Turtle(visible=False)
-    main()  # Call the main function
+    start_game()  # Call the main function
