@@ -164,7 +164,7 @@ def move_left():
         None
     """
 
-    global x, num_moves, move_size
+    global x, num_moves
     x -= move_size  # move to the left of center
     num_moves += 1
 
@@ -181,7 +181,7 @@ def move_right():
         None
     """
 
-    global x, num_moves, move_size
+    global x, num_moves
     x += move_size  # move to the right of center
     num_moves += 1
 
@@ -197,7 +197,7 @@ def move_up():
         None
     """
 
-    global y, move_size, num_moves
+    global y, num_moves
     y += move_size  # move top of center
     num_moves += 1
 
@@ -214,7 +214,7 @@ def move_down():
         None
     """
 
-    global y, move_size, num_moves
+    global y, num_moves
     y -= move_size  # move down of center
     num_moves += 1
 
@@ -287,7 +287,6 @@ def display_instructions():
     Returns:
         no value
     """
-    global num_moves
     t.penup()
     t.goto(225, 300)
     t.pendown()
@@ -325,7 +324,6 @@ def display_user_circle():
     Returns:
         None
     """
-    global x, y, user_color, circle_size
 
     t.hideturtle()  # don't show the icon
     t.speed('fastest')  # draw quickly
@@ -354,7 +352,7 @@ def set_center_location():
     Returns:
         no value
     """
-    global circle_size, x, y
+    global x, y
 
     center_pos = int(circle_size / 2) * -1
 
@@ -370,7 +368,6 @@ def display_hidden_circle():
     Returns:
         None
     """
-    global hidden_x, hidden_y, hidden_color, circle_size
 
     t.hideturtle()  # don't show the icon
     t.speed('fastest')  # draw quickly
