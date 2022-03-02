@@ -212,7 +212,7 @@ def move_down():
 
 
 def set_hidden_location():
-    global hidden_x, hidden_y, circle_size
+    global hidden_x, hidden_y, circle_size, x, y
     while True:
         hidden_x = random.randint(-420, 420)
         hidden_y = random.randint(-300, 300)
