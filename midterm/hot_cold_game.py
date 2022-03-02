@@ -252,7 +252,7 @@ def set_center_location():
     Returns:
         no value
     """
-    global x, y
+    global x, y, user_color
 
     center_pos = int(circle_size / 2) * -1
 
