@@ -62,7 +62,7 @@ def get_size():
         None
     """
     global circle_size, move_size
-
+    # get the user's input for the size of circles and the size of the move
     try:
         circle_size = int(turtle.numinput('Circle', 'Size of circles (10-100)', minval=10, maxval=100))
         move_size = int(turtle.numinput('Circle', 'Size of move (10-100)', minval=10, maxval=100))
@@ -198,7 +198,7 @@ def move_up():
     """
 
     global y, num_moves
-    y += move_size  # move top of center
+    y += move_size  # move up of center
     num_moves += 1
 
     display_game()
@@ -236,6 +236,7 @@ def set_hidden_location():
     too_close = 2 * circle_size + 10
 
     while True:
+        # generate a random x and y location in the default screen size
         hidden_x = random.randint(-420, 420)
         hidden_y = random.randint(-300, 300)
 
@@ -274,12 +275,14 @@ def set_fill_color():
 
     overlap = circle_size * 2 - 10
 
-    # if the circles overlap, then set both circles to a green
+    # if the circles overlap, then set both circles to a green shade
     if abs(x - hidden_x) < overlap and abs(y - hidden_y) < overlap:
         hidden_color = 'green yellow'
         user_color = 'yellow green'
     else:
         if previous_x != x:
+            # if the previous location is closer to the hidden location change the
+            # color to red, else change it to blue
             if abs(previous_x - hidden_x) > abs(x - hidden_x):
                 user_color = 'red'
             else:
@@ -305,12 +308,12 @@ def display_instructions():
         no value
     """
     t.penup()
-    t.goto(225, 300)
+    t.goto(225, 300)  # from the center, move right 225 and up 300
     t.pendown()
     t.pencolor('white')  # text color
     t.write('Total moves= {}'.format(num_moves), font=('Verdana', 12, 'bold'))
 
-    # write text on the screen
+    # write instructions on the screen
     t.penup()  # don't want to see icon moving on the screen
     t.goto(-375, 300)  # from the current position which is center after clear, move left 375 up 300
     t.pendown()
@@ -374,7 +377,7 @@ def display_hidden_circle():
     t.penup()
 
     # draw circle
-    t.goto(hidden_x, hidden_y)  # move to the updated x (left-right) and y (up-down) location from center
+    t.goto(hidden_x, hidden_y)  # move to the hidden x and y location
     t.pencolor('black')
     t.pendown()  # start drawing the outline of the circle
     t.fillcolor(hidden_color)  # fill color of the circle
