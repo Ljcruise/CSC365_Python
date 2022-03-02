@@ -35,12 +35,21 @@ hidden_color = 'black'  # default color for the hidden circle
 
 
 def display_game():
+    """
+    The display_game function clears the turtle drawings, then calls different
+    functions created below to set the colors, draw the user circle and hidden
+    circle, and display the game instructions
+    Args:
+        no value
+    Returns:
+        no value
+    """
     global t
 
     t.clear()
     set_fill_color()
-    display_user_circle()
     display_hidden_circle()
+    display_user_circle()
     display_instructions()
 
 
@@ -76,16 +85,6 @@ def setup_window():
     s.title('Hot-Cold Game')  # title the title bar of the window
     s.bgcolor('black')
 
-    # set up the keys to listen to and what function should be called
-    s.onkeypress(debug, 'd')
-    s.onkeypress(move_home, 'h')
-    s.onkeypress(setup_game, 'r')
-    s.onkeypress(move_up, "Up")
-    s.onkeypress(move_down, "Down")
-    s.onkeypress(move_right, "Right")
-    s.onkeypress(move_left, "Left")
-    s.listen()  # start listening for keys being pressed
-
 
 def setup_game():
     global s, t, num_moves, hidden_color
@@ -96,6 +95,18 @@ def setup_game():
     setup_window()
     t.speed('fastest')  # draw quickly
     get_size()
+    set_center_location()
+    set_hidden_location()
+
+    # set up the keys to listen to and what function should be called
+    s.onkeypress(debug, 'd')
+    s.onkeypress(move_home, 'h')
+    s.onkeypress(setup_game, 'r')
+    s.onkeypress(move_up, "Up")
+    s.onkeypress(move_down, "Down")
+    s.onkeypress(move_right, "Right")
+    s.onkeypress(move_left, "Left")
+    s.listen()  # start listening for keys being pressed
 
 
 def debug():
@@ -323,7 +334,7 @@ def display_hidden_circle():
     t.penup()
 
     # draw circle
-    t.goto(300, 200)  # move to the updated x (left-right) and y (up-down) location from center
+    t.goto(hidden_x, hidden_y)  # move to the updated x (left-right) and y (up-down) location from center
     t.pencolor('black')
     t.pendown()  # start drawing the outline of the circle
     t.fillcolor(hidden_color)  # fill color of the circle
@@ -340,7 +351,7 @@ def start_game():
     Returns:
         no value
     """
-    setup_window()
+    setup_game()
     display_game()
     s.mainloop()
 
