@@ -96,7 +96,7 @@ def setup_game():
     t.speed('fastest')  # draw quickly
     get_size()
     set_center_location()
-    set_hidden_location()
+    #set_hidden_location()
 
     # set up the keys to listen to and what function should be called
     s.onkeypress(debug, 'd')
@@ -318,9 +318,20 @@ def display_user_circle():
 
 
 def set_center_location():
-    global circle_size
+    """
+    The set center location function places the user's circle in the middle of the screen
+    based on the circle's size.
+    Args:
+        no value
+    Returns:
+        no value
+    """
+    global circle_size, x, y
 
-    middle = circle_size / 2 * -1
+    center_pos = int(circle_size / 2) * -1
+
+    x = center_pos
+    y = center_pos
 
 
 def display_hidden_circle():
