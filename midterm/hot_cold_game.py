@@ -212,12 +212,16 @@ def move_down():
 
 
 def set_hidden_location():
-    global hidden_x, hidden_y
+    global hidden_x, hidden_y, circle_size
     while True:
         hidden_x = random.randint(-420, 420)
         hidden_y = random.randint(-300, 300)
-    # if not touching:
-    #    break
+        too_close = 2 * circle_size + 10
+
+        if hidden_x != x and hidden_x != too_close:
+            hidden_x
+        if hidden_y != y and hidden_y != too_close:
+            hidden_y
 
 
 def set_fill_color():
