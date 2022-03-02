@@ -87,6 +87,16 @@ def setup_window():
 
 
 def setup_game():
+    """
+    The setup game function basically resets the program. It resets the number of moves,
+    changes the color of the hidden circle back to black, clears the screen, resets the
+    window, then prompts the user for the size of the shapes and moves, and sets the
+    center location and hidden location.
+    Args:
+        no value
+    Returns:
+        no value
+    """
     global s, t, num_moves, hidden_color
 
     num_moves = 0
@@ -212,6 +222,16 @@ def move_down():
 
 
 def set_hidden_location():
+    """
+    This function generates a random location for the hidden circle based on the default
+    screen size. It checks to see how close the random location is to the user circle
+    starting location, ensuring that the hidden circle does not start too close to the
+    user circle.
+    Args:
+        no value
+    Returns:
+        no value
+    """
     global hidden_x, hidden_y, circle_size, x, y
     while True:
         hidden_x = random.randint(-420, 420)
@@ -225,6 +245,15 @@ def set_hidden_location():
 
 
 def set_fill_color():
+    """
+    This function sets the amount the user's circle must overlap the hidden circle in order
+    to 'win' the game. It also checks the distance the user's circle is from the hidden
+    object to determine if the user is getting closer (red) or farther away (blue).
+    Args:
+        no value
+    Returns:
+        no value
+    """
     global hidden_color, user_color, x, y, previous_x, previous_y, hidden_x, hidden_y
 
     overlap = circle_size * 2 - 10
