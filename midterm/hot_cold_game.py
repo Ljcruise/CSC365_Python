@@ -14,20 +14,36 @@ __version__ = '1.0'
 __copyright__ = 'Copyright 2022.03.04, Hot-Cold Game Assignment'
 __github__ = 'https://github.com/Ljcruise/CSC365_Python.git'
 
-
+# global variables used to control the game
 s = None
 t = None
 num_moves = 0
-circle_size = 50
-move_size = 20
+circle_size = 100
+move_size = 100
+# current location of the user's circles
 x = 0
 y = 0
+# previous location of the user's circle to determine if the user is getting closer or further away
 previous_x = 0
 previous_y = 0
+# used to control the hidden circle location
 hidden_x = 0
 hidden_y = 0
-fill_color = 'blue'
-hidden_color = 'black'
+fill_color = 'blue'     # color of the user's circle
+hidden_color = 'black'  # default color for the hidden circle
+
+
+def debug():
+    global hidden_color
+
+    if hidden_color == 'black':
+        hidden_color = 'gray'
+    else:
+        hidden_color = 'black'
+
+    display_instructions()
+    display_user_circle()
+    display_hidden_circle()
 
 
 def setup_window():
@@ -44,7 +60,8 @@ def setup_window():
     s.title('Hot-Cold Game')  # title the title bar of the window
 
     # set up the keys to listen to and what function should be called
-    s.onkeypress(move_home, "h")
+    s.onkeypress(debug, 'D')
+    s.onkeypress(move_home, 'H')
     s.onkeypress(move_up, "Up")
     s.onkeypress(move_down, "Down")
     s.onkeypress(move_right, "Right")
@@ -73,6 +90,7 @@ def move_home():
     global x, y
     x = 0  # center of screen moving right or left
     y = 0  # center of screen moving up or down
+    display_instructions()
     display_user_circle()
     display_hidden_circle()
 
@@ -88,6 +106,7 @@ def move_left():
 
     global x
     x -= 20  # move to the left of center
+    display_instructions()
     display_user_circle()
     display_hidden_circle()
 
@@ -103,6 +122,7 @@ def move_right():
 
     global x
     x += 20  # move to the right of center
+    display_instructions()
     display_user_circle()
     display_hidden_circle()
 
@@ -118,6 +138,7 @@ def move_up():
 
     global y
     y += 20  # move top of center
+    display_instructions()
     display_user_circle()
     display_hidden_circle()
 
@@ -132,6 +153,7 @@ def move_down():
 
     global y
     y -= 20  # move down of center
+    display_instructions()
     display_user_circle()
     display_hidden_circle()
 
@@ -139,14 +161,20 @@ def move_down():
 def get_size():
     global circle_size, move_size
 
-    circle_size = int(turtle.numinput('Circle', 'Size of circles', minval=10, maxval=100))
-    move_size = int(turtle.numinput('Circle', 'Size of move', minval=10, maxval=100))
+    try:
+        circle_size = int(turtle.numinput('Circle', 'Size of circles', minval=10, maxval=100))
+        move_size = int(turtle.numinput('Circle', 'Size of move', minval=10, maxval=100))
+    except:
+        circle_size = 50
+        move_size = 50
 
 
 def set_fill_color():
     global hidden_color, fill_color, x, y, previous_x, previous_y, hidden_x, hidden_y
 
     overlap = circle_size / 100
+
+    # if the circles overlap, then set both circles to a green
     if abs(x - hidden_x) < (circle_size * 2 - overlap) and abs(y - hidden_y) < (circle_size * 2 - overlap):
         hidden_color = 'green yellow'
         fill_color = 'green yellow'
