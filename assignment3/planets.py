@@ -19,11 +19,14 @@ planets = (('Mercury', 29), ('Venus', 66), ('Earth', 91), ('Mars', 127),
 def get_planet_distance(selected_planet):
     for planet_info in planets:
         planet, distance = planet_info
-        print(planet, '|', distance)
-        #if current_planet == selected_planet:
-            #return distance
-        #else:
-            #return -1
+        if planet == selected_planet:
+            return distance
+        else:
+            return -1
+
+
+def display_distances(selected_planet, distance_list):
+
 
 
 def distance_from_planet(selected_planet):
@@ -33,10 +36,17 @@ def distance_from_planet(selected_planet):
 
 
 def display_planets():
+    """
+    This function displays the plant's names from the tuple list on one line
+    Args:
+        no value
+    Returns:
+        no value
+    """
     print('Planets:', end=' ')
     for planet_info in planets:
         planet, distance = planet_info
-        print(planet, '|', distance)
+        print(planet, end=' ')
 
 
 def main():
@@ -47,8 +57,13 @@ def main():
     Returns:
         no value
     """
-    #get_planet_distance()
-    display_planets()
+    while True:
+        display_planets()   # display list of planets to choose from
+        print()
+        user_input = input('Please enter a planet name from above or q to quit: ')
+        selected_planet = user_input[0].upper()
+        break
+    distance_from_planet(selected_planet)
 
 
 if __name__ == '__main__':
