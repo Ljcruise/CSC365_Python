@@ -25,14 +25,20 @@ def get_planet_distance(selected_planet):
             return -1
 
 
-def display_distances(selected_planet, distance_list):
-
-
-
 def distance_from_planet(selected_planet):
-    empty_list = []
+    distance_list = []
 
     get_planet_distance(selected_planet)
+
+    if selected_planet.distance == -1:
+        print('Unable to locate ' + selected_planet + ' in the list.')
+        return
+
+    for planet_info in planets:
+        planet, distance = planet_info
+        if planet != selected_planet:
+            abs(distance) - abs(selected_planet)
+        #    distance_list.append(planet, distance)
 
 
 def display_planets():
