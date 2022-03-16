@@ -42,7 +42,7 @@ def display_distances(selected_planet, distance_list):
     """
     for generated_list in distance_list:
         planet, distance = generated_list
-        print(planet + ', ' + distance)
+        print(planet, ' is ', distance, ' million miles from ', selected_planet)
 
 
 def distance_from_planet(selected_planet):
@@ -54,7 +54,7 @@ def distance_from_planet(selected_planet):
     Returns:
         no value
     """
-    distance_list = [[]*2]*7
+    distance_list = []
 
     selected_distance = get_planet_distance(selected_planet)
 
@@ -69,7 +69,7 @@ def distance_from_planet(selected_planet):
             distance_list.append([planet, distance_from_selected])
 
     distance_list.sort(key=lambda x: x[1])
-    # display the distances reported by calling the function and passing
+    display_distances(selected_planet, distance_list)
 
 
 def display_planets():
