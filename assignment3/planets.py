@@ -24,8 +24,8 @@ def get_planet_distance(selected_planet):
     Returns:
         distance
     """
-    for planet_info in planets:
-        planet, distance = planet_info
+    for planet_info in planets:   # iterate through planet tuple
+        planet, distance = planet_info   # unpack the planet's name and distance
         if planet == selected_planet:
             return distance
     return -1
@@ -40,9 +40,9 @@ def display_distances(selected_planet, distance_list):
     Returns:
         no value
     """
-    for generated_list in distance_list:
-        planet, distance = generated_list
-        print(planet, ' is ', distance, ' million miles from ', selected_planet)
+    for generated_list in distance_list:   # iterate through this distance list
+        planet, distance = generated_list   # unpack the planet's name and distance
+        print(planet, 'is', distance, 'million miles from', selected_planet)
 
 
 def distance_from_planet(selected_planet):
@@ -59,15 +59,18 @@ def distance_from_planet(selected_planet):
     selected_distance = get_planet_distance(selected_planet)
 
     if selected_distance == -1:
-        print('Unable to locate ' + selected_planet + ' in the list.')
+        print('Unable to locate ' + selected_planet + ' in the list. Please try again.')
         return
 
-    for planet_info in planets:
-        planet, distance = planet_info
+    for planet_info in planets:   # iterate through planet tuple
+        planet, distance = planet_info   # unpack the planet's name and distance
+        # if the planet doesn't equal the selected planet, calculate the distance using
+        # the absolute value function
         if planet != selected_planet:
             distance_from_selected = abs(distance - selected_distance)
             distance_list.append([planet, distance_from_selected])
 
+    # sort the list by using a lambda function
     distance_list.sort(key=lambda x: x[1])
     display_distances(selected_planet, distance_list)
 
@@ -95,12 +98,16 @@ def main():
         no value
     """
     while True:
+        print('=' * 65)
         display_planets()   # display list of planets to choose from
         print()
         user_input = input('Please enter a planet name from above or q to quit: ')
-        selected_planet = user_input.capitalize()
-        break
-    distance_from_planet(selected_planet)
+        print('=' * 65)
+        selected_planet = user_input.capitalize()   # capitalize the first letter of the input
+        if selected_planet[0] == 'Q':
+            print('The force will always be with you... Come back soon')
+            break
+        distance_from_planet(selected_planet)
 
 
 if __name__ == '__main__':
