@@ -9,7 +9,7 @@ user entered planet in order of closest to furthest away.
 
 __author__ = 'Lacie Cruise'
 __version__ = '1.0'
-__copyright__ = 'Copyright 2022.03.17, Planet Assignment'
+__copyright__ = 'Copyright 2022.03.16, Planet Assignment'
 __github__ = 'https://github.com/Ljcruise/CSC365_Python.git'
 
 
