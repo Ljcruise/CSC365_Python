@@ -17,6 +17,13 @@ planets = (('Mercury', 29), ('Venus', 66), ('Earth', 91), ('Mars', 127),
 
 
 def get_planet_distance(selected_planet):
+    """
+    This function gets the selected planet's distance from the sun.
+    Args:
+        no value
+    Returns:
+        distance
+    """
     for planet_info in planets:
         planet, distance = planet_info
         if planet == selected_planet:
@@ -26,11 +33,11 @@ def get_planet_distance(selected_planet):
 
 
 def distance_from_planet(selected_planet):
-    distance_list = []
+    distance_list = [[]*2]*7
 
     get_planet_distance(selected_planet)
 
-    if selected_planet.distance == -1:
+    if get_planet_distance.distance == -1:
         print('Unable to locate ' + selected_planet + ' in the list.')
         return
 
@@ -58,7 +65,7 @@ def display_planets():
 
 def main():
     """
-    The main function, used to run the program by displaying the main menu and options.
+    The main function, used to keep the program looping until the user enters q for quit
     Args:
         no value
     Returns:
