@@ -1,7 +1,10 @@
 #!/usr/bin/env python3
 
 """
-This program
+This program asks the user to enter the name of a planet. It then looks in a 2D tuple
+to find the planet. The program generates a list with the other planet's distance from
+the planet the user entered. Then it displays the planets and the distances from the
+user entered planet in order of closest to furthest away.
 """
 
 __author__ = 'Lacie Cruise'
