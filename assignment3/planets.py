@@ -38,7 +38,7 @@ def distance_from_planet(selected_planet):
         planet, distance = planet_info
         if planet != selected_planet:
             abs(distance) - abs(selected_planet)
-        #    distance_list.append(planet, distance)
+            distance_list.append(planet, distance)
 
 
 def display_planets():
