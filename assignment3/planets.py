@@ -28,9 +28,10 @@ def get_planet_distance(selected_planet):
         planet, distance = planet_info
         if planet == selected_planet:
             return distance
-        else:
-            return -1
+    return -1
 
+
+def display_distances(selected_planet, distance_list):
     """
     This function displays the generated list for each planet's distance
     from the selected planet
@@ -39,6 +40,9 @@ def get_planet_distance(selected_planet):
     Returns:
         no value
     """
+    for generated_list in distance_list:
+        planet, distance = generated_list
+        print(planet + ', ' + distance)
 
 
 def distance_from_planet(selected_planet):
@@ -52,17 +56,20 @@ def distance_from_planet(selected_planet):
     """
     distance_list = [[]*2]*7
 
-    get_planet_distance(selected_planet)
+    selected_distance = get_planet_distance(selected_planet)
 
-    if get_planet_distance.distance == -1:
+    if selected_distance == -1:
         print('Unable to locate ' + selected_planet + ' in the list.')
         return
 
     for planet_info in planets:
         planet, distance = planet_info
         if planet != selected_planet:
-            distance_from_selected = abs(distance - selected_planet)
+            distance_from_selected = abs(distance - selected_distance)
             distance_list.append([planet, distance_from_selected])
+
+    distance_list.sort(key=lambda x: x[1])
+    # display the distances reported by calling the function and passing
 
 
 def display_planets():
@@ -91,7 +98,7 @@ def main():
         display_planets()   # display list of planets to choose from
         print()
         user_input = input('Please enter a planet name from above or q to quit: ')
-        selected_planet = user_input[0].upper()
+        selected_planet = user_input.capitalize()
         break
     distance_from_planet(selected_planet)
 
