@@ -23,9 +23,10 @@ def get_planet_distance(selected_planet):
     """
     This function gets the selected planet's distance from the sun.
     Args:
-        no value
+        selected_planet (str): Planet the user entered to compare other planet's
+        distances from
     Returns:
-        distance
+        distance (int): The selected planets distance from the sun
     """
     for planet_info in planets:   # iterate through planet tuple
         planet, distance = planet_info   # unpack the planet's name and distance
@@ -39,7 +40,10 @@ def display_distances(selected_planet, distance_list):
     This function displays the generated list for each planet's distance
     from the selected planet
     Args:
-        no value
+        selected_planet (str): Planet the user entered to compare other planet's
+        distances from
+        distance_list: list for the adjusted distance for each planet from the
+        selected planet
     Returns:
         no value
     """
@@ -53,7 +57,8 @@ def distance_from_planet(selected_planet):
     This function generates a list for each planet's distance from the
     selected planet
     Args:
-        no value
+        selected_planet (str): Planet the user entered to compare other planet's
+        distances from
     Returns:
         no value
     """
