@@ -107,9 +107,11 @@ def main():
     """
     while True:
         print('=' * 65)
+        print()
         display_planets()   # display list of planets to choose from
         print()
         user_input = input('Please enter a planet name from above or q to quit: ')
+        print()
         print('=' * 65)
         selected_planet = user_input.capitalize()   # capitalize the first letter of the input
         if selected_planet[0] == 'Q':
