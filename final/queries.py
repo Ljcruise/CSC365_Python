@@ -33,17 +33,19 @@ def student_information():
     print('Student Information')
     print(line)
 
-    for student_id in data.students:
+    for student_id, student_data in data.students.items():
         print('ID:', student_id,
               data.students[student_id]['firstName'],
               data.students[student_id]['lastName'])
 
         for group in data.students[student_id]['groups']:
-            print('Groups: ',group, end=', ')
+            print('Groups: ', group, end=', ')
 
-        for subject in data.grades:
-            if student_id in data.grades:
-                print(data.grades['English'][31])
+        print()
+
+        for subject, grades in data.grades.items():
+            if student_id in data.grades[subject]:
+                print(subject, data.grades[subject][student_id])
 
         print()
 
