@@ -1,13 +1,15 @@
 #!/usr/bin/env python3
+
 """
 This module contains the functions for displaying the main menu and running the menu options
 """
 
 import queries
 
-__author__ = "Debbie Johnson"
-__version__ = "1.0"
-_date__ = "2020.11.05"
+__author__ = 'Lacie Cruise'
+__version__ = '1.0'
+__copyright__ = 'CSC365_Python/final'
+__github__ = 'https://github.com/Ljcruise/CSC365_Python.git'
 
 
 def display_menu():
@@ -72,12 +74,12 @@ def main():
                 print('Not a valid menu option.')
 
             print()
-            input("Press Enter to continue...")
+            input('Press Enter to continue...')
             print()
 
         except ValueError:  # catch the error if the user entered nonnumeric data
-            print('Please enter a number between 0 and 6.')
-            input("Press Enter to continue...")
+            print('Please enter a number between 0 and 9.')
+            input('Press Enter to continue...')
             print()
 
     print('Bye!')
@@ -85,5 +87,5 @@ def main():
     return
 
 
-if __name__ == "__main__":  # if this is the module where the program started from, then run the main function
+if __name__ == '__main__':  # if this is the module where the program started from, then run the main function
     main()
