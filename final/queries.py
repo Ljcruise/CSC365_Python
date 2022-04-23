@@ -108,27 +108,22 @@ def sue_smith_class_list():
     print(line)
 
     sue_smith_classes = list()
-    first_name = ''
-    last_name = ''
-    # for key (student id), value (student info dict) in 2d data.students dict items
+
     for student_id, student_data in data.students.items():
-        # get first and last names from the student info dict (value)
-        data.students.get(student_id).get('first_name').get('last_name')
-        # if the first name = Sue and the last name = Smith
+        # get first and last names from the student data dict
+        first_name = data.students[student_id]['first_name']
+        last_name = data.students[student_id]['last_name']
+
+        # if first and last name is Sue Smith, for each subject Sue Smith's student
+        # id is in, append the empty list created above
         if first_name == 'Sue' and last_name == 'Smith':
-            # for key (class), value (class grades dict) in 2D data.grades dict items
             for subject, grades in data.grades.items():
-                # if student id (outer key) in class grades dict (value)
-                if student_id in data.subject[grades]:
-                    # add the class name (key) to sue_smith_classes list with the append method
+                if student_id in data.grades[subject]:
                     sue_smith_classes.append(subject)
 
-    # sort the list
-    sue_smith_classes.sort()
+    sue_smith_classes.sort()   # sort the list
 
-    # for loop for displaying sue_smith_classes list
-    for sue_smith_class in sue_smith_classes:
-        print(sue_smith_class)
+    print(*sue_smith_classes, sep=', ')   # print Sue Smiths classes, separated by a comma
 
 
 def students_in_science_not_math():
