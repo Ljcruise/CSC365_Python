@@ -19,38 +19,38 @@ sports = {
 
 students = {
     31: {
-        'firstName': 'Bob',
-        'lastName': 'Smith',
+        'first_name': 'Bob',
+        'last_name': 'Smith',
         'gender': 'M',
         'groups': {'basketball', 'track', 'student council'}
     },
     22: {
-        'firstName': 'Sue',
-        'lastName': 'Smith',
+        'first_name': 'Sue',
+        'last_name': 'Smith',
         'gender': 'F',
         'groups': {'volleyball', 'basketball', 'track', 'softball', 'national honor society'}
     },
     13: {
-        'firstName': 'Amy',
-        'lastName': 'Hans',
+        'first_name': 'Amy',
+        'last_name': 'Hans',
         'gender': 'F',
         'groups': {'basketball', 'volleyball'}
     },
     41: {
-        'firstName': 'Joe',
-        'lastName': 'Jones',
+        'first_name': 'Joe',
+        'last_name': 'Jones',
         'gender': 'M',
         'groups': {'track', 'baseball', 'cross country', 'wrestling'}
     },
     55: {
-        'firstName': 'Sue',
-        'lastName': 'Johnson',
+        'first_name': 'Sue',
+        'last_name': 'Johnson',
         'gender': 'F',
         'groups': {'basketball', 'volleyball'}
     },
     45: {
-        'firstName': 'Sue',
-        'lastName': 'Johnson',
+        'first_name': 'Sue',
+        'last_name': 'Johnson',
         'gender': 'F',
         'groups': {'track', 'volleyball', 'basketball'}
     }

@@ -36,8 +36,8 @@ def student_information():
 
     for student_id, student_data in data.students.items():
         print('ID:', student_id,
-              data.students[student_id]['firstName'],
-              data.students[student_id]['lastName'])
+              data.students[student_id]['first_name'],
+              data.students[student_id]['last_name'])
 
         for groups in data.students[student_id]['groups']:
             print(tab, 'Groups: ', groups, end=', ')
@@ -58,6 +58,17 @@ def all_sports_list():
 
     sports = list()
 
+    for season, season_sports in data.sports.items():
+        # append the sports list by converting the set to a list and using the extend
+        # function to append it
+        sports.extend(list(season_sports))
+
+    sports.sort()   # sort list
+
+    # for loop for displaying the list
+    for sport in sports:
+        print(sport)
+
 
 def each_class_genders():
     print(line)
@@ -66,6 +77,30 @@ def each_class_genders():
 
     class_genders = dict()
 
+    for subject, grades in data.grades.items():
+        # set male and female counters to 0
+        male_count = 0
+        female_count = 0
+
+        for student_id, grades in data.grades.items():
+            # get gender for the current student id (key) from the 2D data.students dict
+            gender = data.students[student_id]['gender']
+
+            if gender == 'F':
+                female_count += 1
+            else:
+                male_count += 1
+
+    print(female_count)
+    print(male_count)
+    #
+    #	append to the class gender dict, using the class as the key, and...
+    #   a dict with female and male counts (see above example)
+
+    # for loop for displaying the dictionary
+    #for key(class), value (genders dict) in class gender 2D dict items
+        #display the course, and genders dict
+
 
 def sue_smith_class_list():
     print(line)
@@ -73,6 +108,27 @@ def sue_smith_class_list():
     print(line)
 
     sue_smith_classes = list()
+    first_name = ''
+    last_name = ''
+    # for key (student id), value (student info dict) in 2d data.students dict items
+    for student_id, student_data in data.students.items():
+        # get first and last names from the student info dict (value)
+        data.students.get(student_id).get('first_name').get('last_name')
+        # if the first name = Sue and the last name = Smith
+        if first_name == 'Sue' and last_name == 'Smith':
+            # for key (class), value (class grades dict) in 2D data.grades dict items
+            for subject, grades in data.grades.items():
+                # if student id (outer key) in class grades dict (value)
+                if student_id in data.subject[grades]:
+                    # add the class name (key) to sue_smith_classes list with the append method
+                    sue_smith_classes.append(subject)
+
+    # sort the list
+    sue_smith_classes.sort()
+
+    # for loop for displaying sue_smith_classes list
+    for sue_smith_class in sue_smith_classes:
+        print(sue_smith_class)
 
 
 def students_in_science_not_math():
@@ -127,7 +183,15 @@ def main():
     Returns:
         no value
     """
-    student_information()
+    #student_information()                  # need to fix groups
+    #all_sports_list()                      # done
+    #each_class_genders()
+    sue_smith_class_list()
+    #students_in_science_not_math()
+    #non_sports_groups()
+    #all_seasons_sports_students()
+    #student_classes_same_as_sue_smith()
+    #students_with_low_grades()
 
 
 if __name__ == '__main__':  # if this is the module where the program started from, then run the main function
