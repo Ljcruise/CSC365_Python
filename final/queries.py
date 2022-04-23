@@ -24,9 +24,9 @@ def list_students(student_ids):
         student_ids (int):
     """
     for student_id in student_ids:
-        print(student_id,
-              data.students[student_id]['firstName'],
-              data.students[student_id]['lastName'])
+        print('#', student_id,
+              data.students[student_id]['first_name'],
+              data.students[student_id]['last_name'])
 
 
 def student_information():
@@ -76,6 +76,9 @@ def each_class_genders():
     print(line)
 
     class_gender = dict()
+    #'math': {'Female': 3, 'Male': 1}
+    #'english': {'Female': 3, 'Male': 2}
+    #'science': {'Female': 3, 'Male': 2}
 
     for subject, grades in data.grades.items():
         # set male and female counters to 0
@@ -83,25 +86,21 @@ def each_class_genders():
         female_count = 0
 
         for student_id, grades in data.grades.items():
-            # get gender for the current student id (key) from the 2D data.students dict
+            # get gender for the current student id from the 2D data.students dict
             gender = data.students[student_id]['gender']
-            print(gender)
 
             if gender == 'F':
                 female_count += 1
             else:
                 male_count += 1
 
-
         #	append to the class gender dict, using the class as the key, and...
         #   a dict with female and male counts (see above example)
         class_gender[subject].append(female_count)
         class_gender[subject].append(male_count)
 
-        #for key(class), value (genders dict) in class gender 2D dict items
         for subject, genders in class_gender.items():
-            print(subject,': ', genders)
-            #display the course, and genders dict
+            print(subject, genders)
 
 
 def sue_smith_class_list():
@@ -134,6 +133,14 @@ def students_in_science_not_math():
     print(line)
 
     science_not_math = list()
+
+    for student_id, student_data in data.students.items():
+        if student_id in data.grades['Science'] and student_id not in data.grades['Math']:
+            science_not_math.append(student_id)
+
+    science_not_math.sort()
+
+    list_students(science_not_math)
 
 
 def non_sports_groups():
@@ -182,9 +189,9 @@ def main():
     """
     #student_information()                  # need to fix groups
     #all_sports_list()                      # done
-    each_class_genders()
+    #each_class_genders()                   # errors
     #sue_smith_class_list()                 # done
-    #students_in_science_not_math()
+    #students_in_science_not_math()         # done
     #non_sports_groups()
     #all_seasons_sports_students()
     #student_classes_same_as_sue_smith()
