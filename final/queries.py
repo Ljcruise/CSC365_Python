@@ -63,7 +63,7 @@ def all_sports_list():
         # function to append it
         sports.extend(list(season_sports))
 
-    sports.sort()   # sort list
+    sports.sort()  # sort list
 
     # for loop for displaying the list
     for sport in sports:
@@ -76,9 +76,9 @@ def each_class_genders():
     print(line)
 
     class_gender = dict()
-    #'math': {'Female': 3, 'Male': 1}
-    #'english': {'Female': 3, 'Male': 2}
-    #'science': {'Female': 3, 'Male': 2}
+    # 'math': {'Female': 3, 'Male': 1}
+    # 'english': {'Female': 3, 'Male': 2}
+    # 'science': {'Female': 3, 'Male': 2}
 
     for subject, grades in data.grades.items():
         # set male and female counters to 0
@@ -122,9 +122,9 @@ def sue_smith_class_list():
                 if student_id in data.grades[subject]:
                     sue_smith_classes.append(subject)
 
-    sue_smith_classes.sort()   # sort the list
+    sue_smith_classes.sort()  # sort the list
 
-    print(*sue_smith_classes, sep=', ')   # print Sue Smiths classes, separated by a comma
+    print(*sue_smith_classes, sep=', ')  # print Sue Smiths classes, separated by a comma
 
 
 def students_in_science_not_math():
@@ -151,13 +151,43 @@ def non_sports_groups():
     sports = set()
     non_sports = list()
 
+    # build the sports set
+    for season, season_sports in data.sports.items():
+        # append the season sports set to the sports set using update method (multiple values)
+        sports.update(season_sports)
+
+    # build the non_sports list
+    for student_id, student_data in data.students.items():
+        student_groups = data.students[student_id]['groups']
+        leftover = student_groups - sports
+        if leftover != 0:
+            non_sports.append(*leftover)  # use the * to convert the set to a tuple
+
+    non_sports.sort()
+
+    for non_sport in non_sports:
+        print(non_sport)
+
 
 def all_seasons_sports_students():
     print(line)
-    print('All Seasons Sports Students')
+    print('Students in All Four Seasons of Sports')
     print(line)
 
     all_seasons = list()
+
+    for student_id, student_data in data.students.items():
+        student_groups = data.students[student_id]['groups']
+
+        if student_groups & data.sports['fall'] \
+                and student_groups & data.sports['winter'] \
+                and student_groups & data.sports['spring'] \
+                and student_groups & data.sports['summer']:
+            all_seasons.append(student_id)
+
+    all_seasons.sort()
+
+    list_students(all_seasons)
 
 
 def student_classes_same_as_sue_smith():
@@ -168,6 +198,31 @@ def student_classes_same_as_sue_smith():
     sue_smith_classes = set()
     same_as_sue_smith = list()
     students_classes = dict()
+
+    for student_id, student_data in data.students.items():
+        student_classes = set()
+        first_name = data.students[student_id]['first_name']
+        last_name = data.students[student_id]['last_name']
+        name = first_name, last_name
+
+        print(name)
+
+        for subject, grades in data.grades.items():
+            if student_id in data.grades:
+                student_classes.add(subject)
+
+        if name == 'Sue Smith':
+            student_classes = sue_smith_classes
+        else:
+            student_classes.add(students_classes)
+
+    for student_id, classes in students_classes.items():
+        if classes == sue_smith_classes:
+            same_as_sue_smith.append(student_id)
+
+    same_as_sue_smith.sort()
+
+    list_students(same_as_sue_smith)
 
 
 def students_with_low_grades():
@@ -187,15 +242,15 @@ def main():
     Returns:
         no value
     """
-    #student_information()                  # need to fix groups
-    #all_sports_list()                      # done
-    #each_class_genders()                   # errors
-    #sue_smith_class_list()                 # done
-    #students_in_science_not_math()         # done
-    #non_sports_groups()
-    #all_seasons_sports_students()
-    #student_classes_same_as_sue_smith()
-    #students_with_low_grades()
+    # student_information()                  # need to fix groups
+    # all_sports_list()                      # done
+    # each_class_genders()                   # errors
+    # sue_smith_class_list()                 # done
+    # students_in_science_not_math()         # done
+    # non_sports_groups()                    # fix append
+    # all_seasons_sports_students()          # done
+    student_classes_same_as_sue_smith()
+    # students_with_low_grades()
 
 
 if __name__ == '__main__':  # if this is the module where the program started from, then run the main function
