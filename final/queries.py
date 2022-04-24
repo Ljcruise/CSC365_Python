@@ -192,7 +192,7 @@ def all_seasons_sports_students():
 
 def student_classes_same_as_sue_smith():
     print(line)
-    print('Students Classes same as Sue Smith')
+    print('Students in Same Classes as Sue Smith')
     print(line)
 
     sue_smith_classes = set()
@@ -203,18 +203,17 @@ def student_classes_same_as_sue_smith():
         student_classes = set()
         first_name = data.students[student_id]['first_name']
         last_name = data.students[student_id]['last_name']
-        name = first_name, last_name
-
-        print(name)
+        name = first_name + ' ' + last_name
 
         for subject, grades in data.grades.items():
-            if student_id in data.grades:
+            if student_id in data.grades[subject]:
                 student_classes.add(subject)
 
         if name == 'Sue Smith':
-            student_classes = sue_smith_classes
+            sue_smith_classes = list(student_classes)
         else:
-            student_classes.add(students_classes)
+            student_classes.add({student_id: students_classes})
+            print(student_classes)
 
     for student_id, classes in students_classes.items():
         if classes == sue_smith_classes:
@@ -231,6 +230,20 @@ def students_with_low_grades():
     print(line)
 
     low_grades = set()
+
+    for student_id, student_data in data.students.items():
+        for subject, grades in data.grades.items():
+            if student_id in data.grades:
+                #grade total = sum of student grades student_id (outer key) to grade total
+        # grade count = len of student grades student_id (outer key) to grade count
+        # calculate average
+        # if average < 70
+            # low_grades.add(student_id)
+
+    # convert to list and sort
+    low_grades_list = list(low_grades)
+
+    list_students(low_grades_list)
 
 
 def main():
@@ -249,7 +262,7 @@ def main():
     # students_in_science_not_math()         # done
     # non_sports_groups()                    # fix append
     # all_seasons_sports_students()          # done
-    student_classes_same_as_sue_smith()
+    # student_classes_same_as_sue_smith()    # fix add function in if else statement
     # students_with_low_grades()
 
 
