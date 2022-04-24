@@ -191,6 +191,14 @@ def students_in_science_not_math():
 
 
 def non_sports_groups():
+    """
+    The non-sport group function displays the activities that are not
+    part of the sports dictionary
+    Args:
+        no value
+    Returns:
+        no value
+    """
 
     print(line)
     print('NonSports Groups')
@@ -201,7 +209,7 @@ def non_sports_groups():
 
     # build the sports set
     for season, season_sports in data.sports.items():
-        # append the season sports set to the sports set using update method (multiple values)
+        # append the season sports set to the sports set using update method
         sports.update(season_sports)
 
     # build the non_sports list
@@ -218,6 +226,15 @@ def non_sports_groups():
 
 
 def all_seasons_sports_students():
+    """
+    This function calls the list students function to display the students who
+    are in sports for all four seasons.
+    Args:
+        no value
+    Returns:
+        no value
+    """
+
     print(line)
     print('Students in All Four Seasons of Sports')
     print(line)
@@ -239,6 +256,15 @@ def all_seasons_sports_students():
 
 
 def student_classes_same_as_sue_smith():
+    """
+    This function calls the list students function to display the students who
+    are taking the same classes as Sue Smith
+    Args:
+        no value
+    Returns:
+        no value
+    """
+
     print(line)
     print('Students in Same Classes as Sue Smith')
     print(line)
@@ -247,11 +273,12 @@ def student_classes_same_as_sue_smith():
     same_as_sue_smith = list()
     students_classes = dict()
 
+    # build the sue_smith_classes set and students_classes dictionary
     for student_id, student_data in data.students.items():
         student_classes = set()
         first_name = data.students[student_id]['first_name']
         last_name = data.students[student_id]['last_name']
-        name = first_name + ' ' + last_name
+        name = first_name + ' ' + last_name   # combine first and last name
 
         for subject, grades in data.grades.items():
             if student_id in data.grades[subject]:
@@ -263,22 +290,33 @@ def student_classes_same_as_sue_smith():
             student_classes.add({student_id: students_classes})
             print(student_classes)
 
+    # for loop to build same_as_sue_smith list
     for student_id, classes in students_classes.items():
         if classes == sue_smith_classes:
             same_as_sue_smith.append(student_id)
 
-    same_as_sue_smith.sort()
+    same_as_sue_smith.sort()   # sort list
 
-    list_students(same_as_sue_smith)
+    list_students(same_as_sue_smith)   # display student's id and name
 
 
 def students_with_low_grades():
+    """
+    This function calls the list students function to display the students who
+    have average grades below 70.
+    Args:
+        no value
+    Returns:
+        no value
+    """
+
     print(line)
     print('Students with Low Grades')
     print(line)
 
     low_grades = set()
 
+    # build the low_grades set
     for student_id, student_data in data.students.items():
         for subject, grades in data.grades.items():
             if student_id in data.grades:
