@@ -19,8 +19,10 @@ def display_menu():
     :return: no value
     :rtype: none
     """
+
+    print('=' * 38)
     print('Student Data Queries')
-    print('===========================')
+    print('=' * 38)
     print('1 - Students Information')
     print('2 - All Sports List')
     print('3 - Each Class Genders')
@@ -49,7 +51,7 @@ def main():
         display_menu()
 
         try:  # the try is used to catch non numeric data
-            menu_num = int(input('Please enter a Menu # '))
+            menu_num = int(input(f'{"Please enter a Menu #":.<35s} '))
             if menu_num == 1:
                 queries.student_information()
             elif menu_num == 2:

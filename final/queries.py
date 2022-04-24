@@ -1,7 +1,9 @@
 #!/usr/bin/env python3
 
 """
-This module
+This module contains all of the functions that will be called in the main menu.
+The functions all do similar, yet different things by using the student_data
+module to get different information based on what the function is looking for.
 """
 
 __author__ = 'Lacie Cruise'
@@ -336,13 +338,13 @@ def students_with_low_grades():
 def main():
     """
     The main function in this module is used for testing different logic without going through
-     the main menu.
+    the main menu.
     Args:
         no value
     Returns:
         no value
     """
-    student_information()                  # need to fix groups
+    # student_information()                  # need to fix groups
     # all_sports_list()                      # done
     # each_class_genders()                   # errors
     # sue_smith_class_list()                 # done
