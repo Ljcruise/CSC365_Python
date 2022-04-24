@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 
 """
-This module validates all numeric input
+This module
 """
 
 __author__ = 'Lacie Cruise'
@@ -21,8 +21,9 @@ def list_students(student_ids):
     Args:
         no value
     Returns:
-        student_ids (int):
+        student_ids (int): unique id given to each student
     """
+
     for student_id in student_ids:
         print('#', student_id,
               data.students[student_id]['first_name'],
@@ -30,28 +31,47 @@ def list_students(student_ids):
 
 
 def student_information():
+    """
+    The student information function uses information from the students dictionary
+    to print a report for each student using their id, the groups they are apart of,
+    and their classes and grades.
+    Args:
+        no value
+    Returns:
+        no value
+    """
+
     print(line)
     print('Student Information')
     print(line)
 
+    # print the student's id and first and last name
     for student_id, student_data in data.students.items():
         print('ID:', student_id,
               data.students[student_id]['first_name'],
               data.students[student_id]['last_name'])
 
+        # print the groups the student is involved in
         for groups in data.students[student_id]['groups']:
             print(tab, 'Groups: ', groups, end=', ')
-
         print()
 
+        # print the students grades for each class
         for subject, grades in data.grades.items():
             if student_id in data.grades[subject]:
                 print(tab, subject, data.grades[subject][student_id])
-
         print()
 
 
 def all_sports_list():
+    """
+    The all sports list function displays all the sports students can be a part of
+    Args:
+        no value
+    Returns:
+        no value
+    """
+
     print(line)
     print('All Sports')
     print(line)
@@ -71,6 +91,15 @@ def all_sports_list():
 
 
 def each_class_genders():
+    """
+    The each class genders function displays each class with the number of
+    males and females in each.
+    Args:
+        no value
+    Returns:
+        no value
+    """
+
     print(line)
     print('Each Class Genders')
     print(line)
@@ -104,6 +133,14 @@ def each_class_genders():
 
 
 def sue_smith_class_list():
+    """
+    This function displays all of Sue Smiths classes
+    Args:
+        no value
+    Returns:
+        no value
+    """
+
     print(line)
     print('Sue Smith Class List')
     print(line)
@@ -128,6 +165,15 @@ def sue_smith_class_list():
 
 
 def students_in_science_not_math():
+    """
+    This function calls the list students function to display the students who
+    are taking a science class and not a math class.
+    Args:
+        no value
+    Returns:
+        no value
+    """
+
     print(line)
     print('Students in Science but not in Math')
     print(line)
@@ -135,15 +181,17 @@ def students_in_science_not_math():
     science_not_math = list()
 
     for student_id, student_data in data.students.items():
+        # check if the student's id is in the grades dictionary under Science and not Math
         if student_id in data.grades['Science'] and student_id not in data.grades['Math']:
             science_not_math.append(student_id)
 
-    science_not_math.sort()
+    science_not_math.sort()   # sort the list
 
-    list_students(science_not_math)
+    list_students(science_not_math)   # call list students to display the students id and name
 
 
 def non_sports_groups():
+
     print(line)
     print('NonSports Groups')
     print(line)
@@ -234,7 +282,8 @@ def students_with_low_grades():
     for student_id, student_data in data.students.items():
         for subject, grades in data.grades.items():
             if student_id in data.grades:
-                #grade total = sum of student grades student_id (outer key) to grade total
+                print()
+        # grade total = sum of student grades student_id (outer key) to grade total
         # grade count = len of student grades student_id (outer key) to grade count
         # calculate average
         # if average < 70
@@ -255,7 +304,7 @@ def main():
     Returns:
         no value
     """
-    # student_information()                  # need to fix groups
+    student_information()                  # need to fix groups
     # all_sports_list()                      # done
     # each_class_genders()                   # errors
     # sue_smith_class_list()                 # done
