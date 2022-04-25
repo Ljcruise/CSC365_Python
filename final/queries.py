@@ -14,7 +14,6 @@ __github__ = 'https://github.com/Ljcruise/CSC365_Python.git'
 import student_data as data
 
 line = ('=' * 80)
-tab = '\t'
 
 
 def list_students(student_ids):
@@ -53,14 +52,14 @@ def student_information():
               student_data.get('first_name'),
               student_data.get('last_name'))
 
-        print(tab, 'Groups: ', end='')
+        print('\t', 'Groups: ', end='')
         # print the groups the student is involved in
         print(*student_data.get('groups'), sep=', ')
 
         # print the students grades for each class
         for subject, grades in data.grades.items():
             if student_id in data.grades[subject]:
-                print(tab, subject, grades.get(student_id))
+                print('\t', subject, grades.get(student_id))
         print()
 
 
@@ -344,9 +343,9 @@ def main():
         no value
     """
 
-    # student_information()
+    student_information()
     # all_sports_list()
-    each_class_genders()
+    # each_class_genders()
     # sue_smith_class_list()
     # students_in_science_not_math()
     # non_sports_groups()
