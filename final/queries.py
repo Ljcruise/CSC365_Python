@@ -60,6 +60,7 @@ def student_information():
         for subject, grades in data.grades.items():
             if student_id in data.grades[subject]:
                 print('\t', subject, grades.get(student_id))
+        print()
 
 
 def all_sports_list():

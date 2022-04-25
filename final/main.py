@@ -51,6 +51,7 @@ def main():
 
         try:  # the try is used to catch non numeric data
             menu_num = int(input(f'{"Please enter a Menu #":.<35s} '))
+            print()
             if menu_num == 1:
                 queries.student_information()
             elif menu_num == 2:
