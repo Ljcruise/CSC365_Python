@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 
 """
-This module contains all of the functions that will be called in the main menu.
+This module contains the functions that will be called in the main menu.
 The functions all do similar, yet different things by using the student_data
 module to get different information based on what the function is looking for.
 """
@@ -34,8 +34,8 @@ def list_students(student_ids):
 
 def student_information():
     """
-    The student information function uses information from the students dictionary
-    to print a report for each student using their id, the groups they are apart of,
+    The student information function uses information from the student's dictionary
+    to print a report for each student using their id, the groups they are a part of,
     and their classes and grades.
     Args:
         no value
@@ -94,8 +94,7 @@ def all_sports_list():
 
 def each_class_genders():
     """
-    The each class genders function displays each class with the number of
-    males and females in each.
+    The class genders function displays the number of males and females in each class
     Args:
         no value
     Returns:
@@ -291,12 +290,13 @@ def student_classes_same_as_sue_smith():
         if name == 'Sue Smith':
             sue_smith_classes = list(student_classes)
         else:
-            student_classes.add({student_id: students_classes})
-            print(student_classes)
+            # add the student id (outer key) students_classes value to student_classes
+            student_classes.add(student_id)
+            # students_classes.update({student_id: subject})
 
     # for loop to build same_as_sue_smith list
-    for student_id, classes in students_classes.items():
-        if classes == sue_smith_classes:
+    for student_id, subject in students_classes.items():
+        if subject == sue_smith_classes:
             same_as_sue_smith.append(student_id)
 
     same_as_sue_smith.sort()   # sort list
@@ -355,7 +355,7 @@ def main():
     # students_in_science_not_math()         # done
     # non_sports_groups()                    # done
     # all_seasons_sports_students()          # done
-    # student_classes_same_as_sue_smith()    # fix add function in if else statement
+    student_classes_same_as_sue_smith()    # displays nothing
     # students_with_low_grades()             # done
 
 
