@@ -321,13 +321,15 @@ def students_with_low_grades():
     # build the low_grades set
     for student_id, student_data in data.students.items():
         for subject, grades in data.grades.items():
-            if student_id in data.grades:
-                print()
-        # grade total = sum of student grades student_id (outer key) to grade total
-        # grade count = len of student grades student_id (outer key) to grade count
-        # calculate average
-        # if average < 70
-            # low_grades.add(student_id)
+            if student_id in data.grades[subject]:
+
+                grade_total = sum(data.grades[subject][student_id])
+                grade_count = len(data.grades[subject][student_id])
+
+                # calculate average
+                average = grade_total / grade_count
+                if average < 70:
+                    low_grades.add(student_id)
 
     # convert to list and sort
     low_grades_list = list(low_grades)
@@ -352,7 +354,7 @@ def main():
     # non_sports_groups()                    # fix append
     # all_seasons_sports_students()          # done
     # student_classes_same_as_sue_smith()    # fix add function in if else statement
-    # students_with_low_grades()
+    students_with_low_grades()              # check grade count and grade total
 
 
 if __name__ == '__main__':  # if this is the module where the program started from, then run the main function
