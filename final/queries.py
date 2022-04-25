@@ -60,7 +60,7 @@ def student_information():
         # print the students grades for each class
         for subject, grades in data.grades.items():
             if student_id in data.grades[subject]:
-                print(tab, subject, data.grades[subject][student_id])
+                print(tab, subject, grades.get(student_id))
         print()
 
 
@@ -116,7 +116,8 @@ def each_class_genders():
 
         for student_id, grades in data.grades.items():
             # get gender for the current student id from the 2D data.students dict
-            gender = student_data.get('gender')
+            #gender = student_data.get('gender')
+            gender = 'F'
 
             if gender == 'F':
                 female_count += 1
@@ -200,7 +201,7 @@ def non_sports_groups():
     """
 
     print(line)
-    print('NonSports Groups')
+    print('Non-Sports Groups')
     print(line)
 
     sports = set()
@@ -213,7 +214,7 @@ def non_sports_groups():
 
     # build the non_sports list
     for student_id, student_data in data.students.items():
-        student_groups = data.students[student_id]['groups']
+        student_groups = student_data.get('groups')
         leftover = student_groups - sports
 
         if len(leftover) != 0:
@@ -242,7 +243,7 @@ def all_seasons_sports_students():
     all_seasons = list()
 
     for student_id, student_data in data.students.items():
-        student_groups = data.students[student_id]['groups']
+        student_groups = student_data.get('groups')
 
         if student_groups & data.sports['fall'] \
                 and student_groups & data.sports['winter'] \
@@ -320,8 +321,8 @@ def students_with_low_grades():
         for subject, grades in data.grades.items():
             if student_id in data.grades[subject]:
 
-                grade_total = sum(data.grades[subject][student_id])
-                grade_count = len(data.grades[subject][student_id])
+                grade_total = sum(grades.get(student_id))
+                grade_count = len(grades.get(student_id))
 
                 # calculate average
                 average = grade_total / grade_count
@@ -343,15 +344,16 @@ def main():
     Returns:
         no value
     """
-    # student_information()                  # need to fix groups
-    # all_sports_list()                      # done
-    each_class_genders()                   # errors
-    # sue_smith_class_list()                 # done
-    # students_in_science_not_math()         # done
-    # non_sports_groups()                    # done
-    # all_seasons_sports_students()          # done
-    # student_classes_same_as_sue_smith()    # done
-    # students_with_low_grades()             # done
+
+    # student_information()
+    # all_sports_list()
+    each_class_genders()
+    # sue_smith_class_list()
+    # students_in_science_not_math()
+    # non_sports_groups()
+    # all_seasons_sports_students()
+    # student_classes_same_as_sue_smith()
+    # students_with_low_grades()
 
 
 if __name__ == '__main__':  # if this is the module where the program started from, then run the main function
