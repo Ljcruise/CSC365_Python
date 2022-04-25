@@ -42,7 +42,6 @@ def main():
     """
     Main keeps the program looping until the user enters 0 to exit the program
     then based on the user's selected, will call the corresponding function option
-
     :return: no value
     :rtype: none
     """
