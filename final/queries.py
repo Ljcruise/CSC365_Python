@@ -114,13 +114,13 @@ def each_class_genders():
         male_count = 0
         female_count = 0
 
-        for student_id, student_data in data.students.items():
+        for student_id, grades in data.grades.items():
             # get gender for the current student id from the 2D data.students dict
             gender = student_data.get('gender')
 
             if gender == 'F':
                 female_count += 1
-            else:
+            if gender == 'M':
                 male_count += 1
 
         # append to the class gender dict, using the class as the key, and...
