@@ -55,7 +55,7 @@ def student_information():
 
         # print the groups the student is involved in
         for groups in data.students[student_id]['groups']:
-            print(tab, 'Groups: ', groups, end=', ')
+            print(tab, 'Groups:', groups, end=', ')
         print()
 
         # print the students grades for each class
@@ -346,7 +346,7 @@ def main():
     Returns:
         no value
     """
-    # student_information()                  # need to fix groups
+    student_information()                  # need to fix groups
     # all_sports_list()                      # done
     # each_class_genders()                   # errors
     # sue_smith_class_list()                 # done
@@ -354,7 +354,7 @@ def main():
     # non_sports_groups()                    # fix append
     # all_seasons_sports_students()          # done
     # student_classes_same_as_sue_smith()    # fix add function in if else statement
-    students_with_low_grades()              # check grade count and grade total
+    # students_with_low_grades()             # done
 
 
 if __name__ == '__main__':  # if this is the module where the program started from, then run the main function
