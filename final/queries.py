@@ -50,13 +50,12 @@ def student_information():
     # print the student's id and first and last name
     for student_id, student_data in data.students.items():
         print('ID:', student_id,
-              data.students[student_id]['first_name'],
-              data.students[student_id]['last_name'])
+              student_data.get('first_name'),
+              student_data.get('last_name'))
 
+        print(tab, 'Groups: ', end='')
         # print the groups the student is involved in
-        for groups in data.students[student_id]['groups']:
-            print(tab, 'Groups:', groups, end=', ')
-        print()
+        print(*student_data.get('groups'), sep=', ')
 
         # print the students grades for each class
         for subject, grades in data.grades.items():
@@ -115,9 +114,9 @@ def each_class_genders():
         male_count = 0
         female_count = 0
 
-        for student_id, grades in data.grades.items():
+        for student_id, student_data in data.students.items():
             # get gender for the current student id from the 2D data.students dict
-            gender = data.students[student_id]['gender']
+            gender = student_data.get('gender')
 
             if gender == 'F':
                 female_count += 1
@@ -126,12 +125,10 @@ def each_class_genders():
 
         # append to the class gender dict, using the class as the key, and...
         # a dict with female and male counts (see above example)
-        class_gender[subject].append(female_count)
-        class_gender[subject].append(male_count)
-        print(class_gender)
+        class_gender[subject] = {'male': male_count, 'female': female_count}
 
         for subject, genders in class_gender.items():
-            print(subject, genders)
+            print(subject + ':', 'Male =', genders.get('male'), 'Female =', genders.get('female'))
 
 
 def sue_smith_class_list():
@@ -151,8 +148,8 @@ def sue_smith_class_list():
 
     for student_id, student_data in data.students.items():
         # get first and last names from the student data dict
-        first_name = data.students[student_id]['first_name']
-        last_name = data.students[student_id]['last_name']
+        first_name = student_data.get('first_name')
+        last_name = student_data.get('last_name')
 
         # if first and last name is Sue Smith, for each subject Sue Smith's student
         # id is in, append the empty list created above
@@ -279,20 +276,18 @@ def student_classes_same_as_sue_smith():
     # build the sue_smith_classes set and students_classes dictionary
     for student_id, student_data in data.students.items():
         student_classes = set()
-        first_name = data.students[student_id]['first_name']
-        last_name = data.students[student_id]['last_name']
-        name = first_name + ' ' + last_name   # combine first and last name
+        first_name = student_data.get('first_name')
+        last_name = student_data.get('last_name')
 
         for subject, grades in data.grades.items():
-            if student_id in data.grades[subject]:
+            if student_id in grades:
                 student_classes.add(subject)
 
-        if name == 'Sue Smith':
-            sue_smith_classes = list(student_classes)
+        if (first_name + last_name) == 'SueSmith':
+            sue_smith_classes = student_classes
         else:
-            # add the student id (outer key) students_classes value to student_classes
-            student_classes.add(student_id)
-            # students_classes.update({student_id: subject})
+            # add the student id students_classes value to student_classes
+            students_classes[student_id] = student_classes
 
     # for loop to build same_as_sue_smith list
     for student_id, subject in students_classes.items():
@@ -350,12 +345,12 @@ def main():
     """
     # student_information()                  # need to fix groups
     # all_sports_list()                      # done
-    # each_class_genders()                   # errors
+    each_class_genders()                   # errors
     # sue_smith_class_list()                 # done
     # students_in_science_not_math()         # done
     # non_sports_groups()                    # done
     # all_seasons_sports_students()          # done
-    student_classes_same_as_sue_smith()    # displays nothing
+    # student_classes_same_as_sue_smith()    # done
     # students_with_low_grades()             # done
 
 
