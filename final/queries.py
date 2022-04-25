@@ -125,10 +125,11 @@ def each_class_genders():
             else:
                 male_count += 1
 
-        #	append to the class gender dict, using the class as the key, and...
-        #   a dict with female and male counts (see above example)
+        # append to the class gender dict, using the class as the key, and...
+        # a dict with female and male counts (see above example)
         class_gender[subject].append(female_count)
         class_gender[subject].append(male_count)
+        print(class_gender)
 
         for subject, genders in class_gender.items():
             print(subject, genders)
@@ -218,7 +219,8 @@ def non_sports_groups():
     for student_id, student_data in data.students.items():
         student_groups = data.students[student_id]['groups']
         leftover = student_groups - sports
-        if leftover != 0:
+
+        if len(leftover) != 0:
             non_sports.append(*leftover)  # use the * to convert the set to a tuple
 
     non_sports.sort()
@@ -346,12 +348,12 @@ def main():
     Returns:
         no value
     """
-    student_information()                  # need to fix groups
+    # student_information()                  # need to fix groups
     # all_sports_list()                      # done
     # each_class_genders()                   # errors
     # sue_smith_class_list()                 # done
     # students_in_science_not_math()         # done
-    # non_sports_groups()                    # fix append
+    # non_sports_groups()                    # done
     # all_seasons_sports_students()          # done
     # student_classes_same_as_sue_smith()    # fix add function in if else statement
     # students_with_low_grades()             # done
