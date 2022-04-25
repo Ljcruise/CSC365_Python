@@ -114,10 +114,9 @@ def each_class_genders():
         male_count = 0
         female_count = 0
 
-        for student_id, grades in data.grades.items():
+        for student_id, grades in data.grades[subject].items():
             # get gender for the current student id from the 2D data.students dict
-            #gender = student_data.get('gender')
-            gender = 'F'
+            gender = data.students[student_id]['gender']
 
             if gender == 'F':
                 female_count += 1
@@ -128,8 +127,8 @@ def each_class_genders():
         # a dict with female and male counts (see above example)
         class_gender[subject] = {'male': male_count, 'female': female_count}
 
-        for subject, genders in class_gender.items():
-            print(subject + ':', 'Male =', genders.get('male'), 'Female =', genders.get('female'))
+    for subject, genders in class_gender.items():
+        print(subject + ':', 'Male =', genders.get('male'), 'Female =', genders.get('female'))
 
 
 def sue_smith_class_list():
