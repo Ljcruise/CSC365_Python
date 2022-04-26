@@ -75,6 +75,7 @@ def main():
             else:
                 print('Not a valid menu option.')
 
+            print('=' * 80)
             print()
             input('Press Enter to continue...')
             print()

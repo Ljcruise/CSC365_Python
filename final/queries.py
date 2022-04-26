@@ -14,6 +14,7 @@ __github__ = 'https://github.com/Ljcruise/CSC365_Python.git'
 import student_data as data
 
 line = ('=' * 80)
+line2 = ('-' * 80)
 
 
 def list_students(student_ids):
@@ -27,8 +28,8 @@ def list_students(student_ids):
 
     for student_id in student_ids:
         print('#', student_id,
-              data.students[student_id]['first_name'],
-              data.students[student_id]['last_name'])
+              data.students.get(student_id).get('first_name'),
+              data.students.get(student_id).get('last_name'))
 
 
 def student_information():
@@ -44,7 +45,7 @@ def student_information():
 
     print(line)
     print('Student Information')
-    print(line)
+    print(line2)
 
     # print the student's id and first and last name
     for student_id, student_data in data.students.items():
@@ -58,7 +59,7 @@ def student_information():
 
         # print the students grades for each class
         for subject, grades in data.grades.items():
-            if student_id in data.grades[subject]:
+            if student_id in grades:
                 print('\t', subject, grades.get(student_id))
         print()
 
@@ -74,7 +75,7 @@ def all_sports_list():
 
     print(line)
     print('All Sports')
-    print(line)
+    print(line2)
 
     sports = list()
 
@@ -85,9 +86,7 @@ def all_sports_list():
 
     sports.sort()  # sort list
 
-    # for loop for displaying the list
-    for sport in sports:
-        print(sport)
+    print(*sports)
 
 
 def each_class_genders():
@@ -101,7 +100,7 @@ def each_class_genders():
 
     print(line)
     print('Each Class Genders')
-    print(line)
+    print(line2)
 
     class_gender = dict()
     # 'math': {'Female': 3, 'Male': 1}
@@ -113,7 +112,7 @@ def each_class_genders():
         male_count = 0
         female_count = 0
 
-        for student_id, grades in data.grades[subject].items():
+        for student_id, student_grades in grades.items():
             # get gender for the current student id from the 2D data.students dict
             gender = data.students[student_id]['gender']
 
@@ -141,7 +140,7 @@ def sue_smith_class_list():
 
     print(line)
     print('Sue Smith Class List')
-    print(line)
+    print(line2)
 
     sue_smith_classes = list()
 
@@ -174,11 +173,11 @@ def students_in_science_not_math():
 
     print(line)
     print('Students in Science but not in Math')
-    print(line)
+    print(line2)
 
     science_not_math = list()
 
-    for student_id, student_data in data.students.items():
+    for student_id in data.students.keys():
         # check if the student's id is in the grades dictionary under Science and not Math
         if student_id in data.grades['Science'] and student_id not in data.grades['Math']:
             science_not_math.append(student_id)
@@ -200,7 +199,7 @@ def non_sports_groups():
 
     print(line)
     print('Non-Sports Groups')
-    print(line)
+    print(line2)
 
     sports = set()
     non_sports = list()
@@ -220,8 +219,7 @@ def non_sports_groups():
 
     non_sports.sort()
 
-    for non_sport in non_sports:
-        print(non_sport)
+    print(*non_sports, sep='\n')
 
 
 def all_seasons_sports_students():
@@ -236,17 +234,17 @@ def all_seasons_sports_students():
 
     print(line)
     print('Students in All Four Seasons of Sports')
-    print(line)
+    print(line2)
 
     all_seasons = list()
 
     for student_id, student_data in data.students.items():
         student_groups = student_data.get('groups')
 
-        if student_groups & data.sports['fall'] \
-                and student_groups & data.sports['winter'] \
-                and student_groups & data.sports['spring'] \
-                and student_groups & data.sports['summer']:
+        if student_groups & data.sports.get('fall') \
+                and student_groups & data.sports.get('winter') \
+                and student_groups & data.sports.get('spring') \
+                and student_groups & data.sports.get('summer'):
             all_seasons.append(student_id)
 
     all_seasons.sort()
@@ -266,7 +264,7 @@ def student_classes_same_as_sue_smith():
 
     print(line)
     print('Students in Same Classes as Sue Smith')
-    print(line)
+    print(line2)
 
     sue_smith_classes = set()
     same_as_sue_smith = list()
@@ -310,7 +308,7 @@ def students_with_low_grades():
 
     print(line)
     print('Students with Low Grades')
-    print(line)
+    print(line2)
 
     low_grades = set()
 
@@ -343,7 +341,7 @@ def main():
         no value
     """
 
-    student_information()
+    # student_information()
     # all_sports_list()
     # each_class_genders()
     # sue_smith_class_list()
